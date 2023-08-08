@@ -79,13 +79,13 @@ include("./../../../../php/verificar_session.php");
                     <h4>Formulario:</h4>
                   </div>
                   <div class="card-body">
-                    <form class="forms-sample form-cliente" id="formulario">
+                    <form class="forms-sample form-requerimiento" id="formulario">
 
                       <div class="row">
 
                         <!-- Grupo: Nombres-->
                         <div class="form-group col-md-6 formulario__grupo" id="grupo__registrador">
-                          <label for="nombre" class="formulario__label">Nombres y Apellidos del Registrador</label>
+                          <label for="registrador" class="formulario__label">Nombres y Apellidos del Registrador</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -257,7 +257,7 @@ include("./../../../../php/verificar_session.php");
   <!-- Funcionalidades Pages -->
   <script type="module" src="../controllers/NuevoRequerimiento.js"></script>
   <script src="../tasks/CargarProductos.js"></script>
-  <script src="../controllers/cargarProductos.js"></script>
+  <script src="../controllers/CargarProductos.js"></script>
   <!-- Modal para seleccionar consumibles -->
   <?php include("seleccionar-productos.php") ?>
 </body>

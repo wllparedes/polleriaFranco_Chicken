@@ -35,7 +35,7 @@ $(document).ready(() => {
                                     </div>
                                 </td>
                                 <td> 
-                                    <input required type="text" id="unidad" pattern="[0-9\.]+" name="unidad" class="color-focus form-control input-unidad" placeholder="Ingrese la cantidad (kg.)">
+                                    <input required type="text" id="unidad" pattern="[0-9\.]+" name="unidad" class="color-focus form-control input-unidad" placeholder="Ingrese la cantidad (kg.)" value="10">
                                 </td>
                             </tr>`;
                     });
