@@ -40,7 +40,7 @@
       <li class="dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-dollar-sign"></i> <span>Pago</span></a>
         <ul class="dropdown-menu">
-          <li><a href="auth-forgot-password.html">Registrar Pago</a></li>
+          <li><a href="../../../facturacion/pago/views/registrar-pago.php">Registrar Pago</a></li>
         </ul>
       </li>
 

@@ -166,6 +166,113 @@ $productos = $detalleComprobante['productos'];
 
                 </div>
 
+                <?php
+
+                if (count($cliente) == 1) {
+
+                  ?>
+                  <div class="section-title">Información precisa del Cliente</div>
+                  <p class="section-lead">Toda la información precisa del cliente.</p>
+                  <div class="row">
+
+                    <!-- Grupo: id_cliente  -->
+                    <div class="form-group col-md-3 formulario__grupo" id="grupo__id_cliente">
+                      <label for="id_cliente" class="formulario__label">ID Cliente</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-fingerprint"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="id_cliente" name="id_cliente"
+                          value="<?php echo $comprobante['id_cliente'] ?>">
+                      </div>
+                    </div>
+
+                    <!-- Grupo: razon_social  -->
+                    <div class="form-group col-md-4 formulario__grupo" id="grupo__razon_social">
+                      <label for="razon_social" class="formulario__label">Razon Social</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-signature"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="razon_social" name="razon_social"
+                          value="<?php echo $cliente[0]['razon_social'] ?>">
+                      </div>
+                    </div>
+
+                    <!-- Grupo: direccion  -->
+                    <div class="form-group col-md-5 formulario__grupo" id="grupo__direccion">
+                      <label for="direccion" class="formulario__label">Dirección</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-location-arrow"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="direccion" name="direccion"
+                          value="<?php echo $cliente[0]['direccion'] ?>">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <!-- Grupo: correo  -->
+                    <div class="form-group col-md-4 formulario__grupo" id="grupo__correo">
+                      <label for="correo" class="formulario__label">Correo</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-at"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="correo" name="correo"
+                          value="<?php echo $cliente[0]['correo'] ?>">
+                      </div>
+                    </div>
+
+                    <!-- Grupo: ruc  -->
+                    <div class="form-group col-md-4 formulario__grupo" id="grupo__ruc">
+                      <label for="ruc" class="formulario__label">RUC</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-hashtag"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="ruc" name="ruc"
+                          value="<?php echo $cliente[0]['ruc'] ?>">
+                      </div>
+                    </div>
+
+                    <!-- Grupo: número  -->
+                    <div class="form-group col-md-4 formulario__grupo" id="grupo__numero">
+                      <label for="numero" class="formulario__label">Número</label>
+                      <div class="formulario__grupo-input input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-phone"></i>
+                          </div>
+                        </div>
+                        <input type="text" disabled class="form-control" id="numero" name="numero"
+                          value="<?php echo $cliente[0]['numero'] ?>">
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <?php
+
+                }
+
+                ?>
+
+
                 <div class="section-title">Información precisa del Pedido</div>
                 <p class="section-lead">Toda la información precisa del pedido.</p>
 
@@ -274,112 +381,6 @@ $productos = $detalleComprobante['productos'];
                   </div>
                 </div>
 
-                <?php
-
-                if (count($cliente) == 1) {
-
-                  ?>
-                  <div class="section-title">Información precisa del Cliente</div>
-                  <p class="section-lead">Toda la información precisa del cliente.</p>
-                  <div class="row">
-
-                    <!-- Grupo: id_cliente  -->
-                    <div class="form-group col-md-3 formulario__grupo" id="grupo__id_cliente">
-                      <label for="id_cliente" class="formulario__label">ID Cliente</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-fingerprint"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="id_cliente" name="id_cliente"
-                          value="<?php echo $comprobante['id_cliente'] ?>">
-                      </div>
-                    </div>
-
-                    <!-- Grupo: razon_social  -->
-                    <div class="form-group col-md-4 formulario__grupo" id="grupo__razon_social">
-                      <label for="razon_social" class="formulario__label">Razon Social</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-signature"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="razon_social" name="razon_social"
-                          value="<?php echo $cliente[0]['razon_social'] ?>">
-                      </div>
-                    </div>
-
-                    <!-- Grupo: direccion  -->
-                    <div class="form-group col-md-5 formulario__grupo" id="grupo__direccion">
-                      <label for="direccion" class="formulario__label">Dirección</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-location-arrow"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="direccion" name="direccion"
-                          value="<?php echo $cliente[0]['direccion'] ?>">
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="row">
-
-                    <!-- Grupo: correo  -->
-                    <div class="form-group col-md-4 formulario__grupo" id="grupo__correo">
-                      <label for="correo" class="formulario__label">Correo</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-at"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="correo" name="correo"
-                          value="<?php echo $cliente[0]['correo'] ?>">
-                      </div>
-                    </div>
-
-                    <!-- Grupo: ruc  -->
-                    <div class="form-group col-md-4 formulario__grupo" id="grupo__ruc">
-                      <label for="ruc" class="formulario__label">RUC</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-hashtag"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="ruc" name="ruc"
-                          value="<?php echo $cliente[0]['ruc'] ?>">
-                      </div>
-                    </div>
-
-                    <!-- Grupo: número  -->
-                    <div class="form-group col-md-4 formulario__grupo" id="grupo__numero">
-                      <label for="numero" class="formulario__label">Número</label>
-                      <div class="formulario__grupo-input input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                          </div>
-                        </div>
-                        <input type="text" disabled class="form-control" id="numero" name="numero"
-                          value="<?php echo $cliente[0]['numero'] ?>">
-                      </div>
-                    </div>
-
-
-                  </div>
-
-                  <?php
-
-                }
-
-                ?>
-
                 <div class="row mt-4">
                   <div class="col-md-12">
                     <div class="section-title">Detalle del Pedido</div>
@@ -421,28 +422,42 @@ $productos = $detalleComprobante['productos'];
                     <div class="row mt-4">
                       <div class="col-lg-8">
                         <div class="section-title">Monto del Comprobante de Venta: </div>
-                        <p class="section-lead"> <strong>Nota: </strong>El monto 'total' es el monto por el cual el cliente pagará.
+                        <p class="section-lead"> <strong>Nota: </strong>El monto 'total' es el monto por el cual el
+                          cliente pagará.
                         </p>
+
                       </div>
                       <div class="col-lg-4 text-right">
                         <div class="invoice-detail-item">
                           <div class="invoice-detail-name">Subtotal</div>
                           <h5>
-                            <div class="invoice-detail-value" id="sub_total">S/. <?php echo $pedido['sub_total'] ?> </div>
+                            <div class="invoice-detail-value" id="sub_total">S/.
+                              <?php echo $pedido['sub_total'] ?>
+                            </div>
                           </h5>
+
+
                         </div>
                         <div class="invoice-detail-item">
                           <div class="invoice-detail-name">IGV</div>
                           <h5>
-                            <div class="invoice-detail-value" id="igv">S/. <?php echo $comprobante['igv'] ?> </div>
+                            <div class="invoice-detail-value" id="igv">S/.
+                              <?php echo $comprobante['igv'] ?>
+                            </div>
                           </h5>
+
+
                         </div>
                         <hr class="mt-2 mb-2">
                         <div class="invoice-detail-item">
                           <div class="invoice-detail-name">Total</div>
                           <h4>
-                            <div class="invoice-detail-value invoice-detail-value-lg" id="total">S/. <?php echo $comprobante['total'] ?> </div>
+                            <div class="invoice-detail-value invoice-detail-value-lg" id="total">S/.
+                              <?php echo $comprobante['total'] ?>
+                            </div>
                           </h4>
+
+
                         </div>
                       </div>
                     </div>
