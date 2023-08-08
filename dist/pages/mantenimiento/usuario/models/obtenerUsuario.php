@@ -19,8 +19,16 @@ $json = array(
 
 while ( $row = $result->fetch_assoc() ) {
 
-    $password = $row['clave'];
-    $decrypted_password = openssl_decrypt($password, 'AES-256-ECB', $key);
+    $clave = $row['clave'];
+
+    $queryP = "SELECT CAST(AES_DECRYPT(?, ?) AS CHAR) FROM usuario WHERE id_usuario = ?";
+    $stmtP = $conn->prepare($queryP);
+    $stmtP->bind_param('ssi', $clave, $key, $id);
+    $stmtP->execute();
+    $resultP = $stmtP->get_result();
+    $rowP = $resultP->fetch_object();
+    $password_decrypted = $rowP->{'CAST(AES_DECRYPT(?, ?) AS CHAR)'};
+
 
     $json['usuario'][] = array( 
         'id_usuario' => $row['id_usuario'],
@@ -31,8 +39,7 @@ while ( $row = $result->fetch_assoc() ) {
         'nombre_usuario' => $row['nombre_usuario'],
         'email' => $row['email'],
         'id_cargo' => $row['id_cargo'],
-        'clave' => $decrypted_password,
-        
+        'clave' => $password_decrypted,
     );
 }
 

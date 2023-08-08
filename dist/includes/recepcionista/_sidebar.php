@@ -79,8 +79,8 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-universal-access"></i>
           <span>Cargos</span></a>
         <ul class="dropdown-menu">
-          <li><a href="utilities-contact.html">Nuevo Cargo</a></li>
-          <li><a class="nav-link" href="utilities-invoice.html">Lista de Cargos</a></li>
+          <li><a href="../../../mantenimiento/cargo/views/nuevo-cargo.php">Nuevo Cargo</a></li>
+          <li><a href="../../../mantenimiento/cargo/views/lista-cargos.php">Lista de Cargos</a></li>
         </ul>
       </li>
       <li class="dropdown">

@@ -217,7 +217,7 @@ $(document).ready(() => {
                     options: cargos,
                     search: true,
                     required: true,
-                    selectedValue: datos['id_cargo'],
+                    selectedValue: datos.id_cargo,
                     searchPlaceholderText: 'Buscar...',
                     noSearchResultsText: 'No se encontraron resultados',
                     noOptionsText: 'No hay opciones para mostrar',

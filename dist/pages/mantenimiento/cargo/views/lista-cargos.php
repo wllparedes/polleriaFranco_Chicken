@@ -4,7 +4,6 @@
 include("./../../../../php/empezar_session.php");
 include("./../../../../php/verificar_session.php");
 
-$ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../includes/recepcionista/_sidebar.php" : "./../../../../includes/mesero/_sidebar.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Lista de Pedidos</title>
+  <title>Lista de Cargos</title>
   <link rel="icon" href="./../../../../assets/img/login/icon.png" type="image/x-icon">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="./../../../../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -22,7 +21,6 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
   <!-- Template CSS -->
   <link rel="stylesheet" href="./../../../../assets/css/style.css">
   <link rel="stylesheet" href="./../../../../assets/css/components.css">
-
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
@@ -42,23 +40,23 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
 
       <?php include("./../../../../includes/_navbar.php") ?>
 
-      <?php include($ruta_sidebar); ?>
+      <?php include("./../../../../includes/recepcionista/_sidebar.php") ?>
 
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tabla: Pedidos</h1>
+            <h1>Tabla: Categorías</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Inicio</a></div>
-              <div class="breadcrumb-item">Ventas</div>
-              <div class="breadcrumb-item">Lista de Pedidos</div>
+              <div class="breadcrumb-item">Mantenimiento</div>
+              <div class="breadcrumb-item">Lista de Cargos</div>
             </div>
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Lista de Pedidos</h2>
-            <p class="section-lead">Lista de Pedidos registrados.</p>
+            <h2 class="section-title">Lista de Cargos</h2>
+            <p class="section-lead">Lista de Cargos registrados.</p>
 
 
             <!-- ! SEGUNDA FILA -->
@@ -66,14 +64,16 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tabla Pedidos:</h4>
+                    <h4>Tabla Cargos:</h4>
                     <div class="card-header-form">
-                      <div class="input-group">
-                        <input type="search" class="form-control" placeholder="Buscar pedido" id="search">
-                        <div class="input-group-btn">
-                          <button disabled class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      <form>
+                        <div class="input-group">
+                          <input type="search" class="form-control" placeholder="Buscar cargo" id="search">
+                          <div class="input-group-btn">
+                            <button disabled class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
                         </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                   <div class="card-body p-0">
@@ -83,26 +83,21 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>N. Cliente</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Subtotal</th>
-                            <th>Mesa</th>
-                            <th>Observaciones</th>
-                            <th>Estado</th>
-                            <th>Ver</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Editar</th>
                             <th>Eliminar</th>
                           </tr>
                         </thead>
 
-                        <tbody id="pedidos-result">
+                        <tbody id="cargos-result">
                         <tbody>
-                          <!-- Busqueda de Pedidos -->
+                          <!-- Busqueda de cargos -->
                         </tbody>
                         </tbody>
 
                         <tbody id="content">
-                          <!-- Lista de Pedidos -->
+                          <!-- Lista de cargos -->
                         </tbody>
                       </table>
                     </div>
@@ -129,8 +124,13 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
   <script src="./../../../../assets/modules/tooltip.js"></script>
   <script src="./../../../../assets/modules/bootstrap/js/bootstrap.min.js"></script>
   <script src="./../../../../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <!-- <script src="./../../../../assets/modules/moment.min.js"></script> -->
-  <!-- <script src="./../../../../assets/js/stisla.js"></script> -->
+  <script src="./../../../../assets/modules/moment.min.js"></script>
+  <script src="./../../../../assets/js/stisla.js"></script>
+
+  <!-- Phone PE -->
+  <!-- <script src="./../../../../assets/modules/cleave-js/dist/cleave.min.js"></script> -->
+  <!-- <script src="./../../../../assets/modules/cleave-js/dist/addons/cleave-phone.pe.js"></script> -->
+  <!-- <script src="./../../../../assets/js/page/forms-advanced-forms.js"></script> -->
 
   <!-- JS Libraies -->
   <script src="./../../../../assets/modules/jquery-ui/jquery-ui.min.js"></script>
@@ -144,21 +144,16 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
   <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
   <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
   <script src="./../../../../assets/js/custom.js"></script>
-
   <!-- Sweet Alert -->
   <script src="./../../../../assets/modules/sweetalert/sweetalert2.all.min.js"></script>
   <script src="./../../../../assets/js/page/modules-sweetalert.js"></script>
   <!-- Funcionalidades web -->
-  <script type="module" src="../controllers/ListaPedidos.js"></script>
+  <script type="module" src="../controllers/ListaCargos.js"></script>
   <!-- Underscore -->
-  <!-- <script src="../../../../assets/js/underscore-min.js"></script> -->
+  <script src="../../../../assets/js/underscore-min.js"></script>
   <!-- Modal Actualziar Cliente -->
-  <!--  <?php // include("actualizar-cliente.php") ?> -->
-  
-  <!-- Phone PE -->
-  <!-- <script src="./../../../../assets/modules/cleave-js/dist/cleave.min.js"></script>
-  <script src="./../../../../assets/modules/cleave-js/dist/addons/cleave-phone.pe.js"></script>
-  <script src="./../../../../assets/js/page/forms-advanced-forms.js"></script> -->
+  <?php include("actualizar-cargo.php") ?>
+
 </body>
 
 </html>

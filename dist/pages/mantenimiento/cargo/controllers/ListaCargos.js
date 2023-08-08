@@ -4,42 +4,35 @@ import { validarCampo, campos } from './../../../../assets/js/scripts/validarCam
 
 $(document).ready(() => {
     
-    fetchProductos();
-    // * Listar productos
-    function fetchProductos() {
-        $.ajax({
-            url: '../models/listaProductos.php', 
+    fetchCargos();
+    // * Listar cargos
+    function fetchCargos() {
+        $.ajax({ 
+            url: '../models/listaCargos.php',
             type: 'GET',
             success: function (response) {
-                let productos = JSON.parse(response);
+                let cargos = JSON.parse(response);
                 let tablaVacia = document.getElementById('tabla');
                 let template = '';
-
                 if (response.trim() === '[]') {
-                    tablaVacia.innerHTML = `<tr> <td colspan="7" class="text-center"> <h6>Sin registros por el momento</h6> </td> </tr>`;
+                    tablaVacia.innerHTML = `<tr> <td colspan="5" class="text-center"> <h6>Sin registros por el momento</h6> </td> </tr>`;
                 } else {
-                    productos.forEach(producto => {
+                    cargos.forEach(cargo => {
                         template += `
-                        <tr productoID="${producto.id_producto}">
-                            <td>
+                        <tr cargoID="${cargo.id_cargo}">
+                            <td>    
                                 <div class="badge badge-light">
-                                    ${producto.id_producto} 
+                                    ${cargo.id_cargo}
                                 </div>
                             </td>
-                            <td> ${producto.nom_producto} </td>
-                            <td> ${producto.descripcion} </td>
                             <td>
-                                <div class="badge badge-primary">
-                                    S/. ${producto.precio}
-                                </div>    
-                            </td>
-                            <td>
-                                <div class="badge badge-secondary">
-                                    ${producto.nom_categoria} 
+                                <div class="badge badge-success">
+                                    ${cargo.nom_cargo}
                                 </div>
                             </td>
+                            <td> ${cargo.descripcion} </td>
                             <td> 
-                                <button class="actualizar-btn btn btn-warning shadow-warning" data-bs-toggle="modal" data-bs-target="#actualizar-producto-modal"> 
+                                <button class="actualizar-btn btn btn-warning shadow-warning" data-bs-toggle="modal" data-bs-target="#actualizar-cargo-modal"> 
                                     <i class="fas fa-pen"></i>
                                 </button> 
                             </td>
@@ -55,43 +48,37 @@ $(document).ready(() => {
                 }
             },
         });
-    };
-
+    }
+    
 
     // ? BUSAR 
     $('#search').keyup(function () {
         if ($('#search').val() != "") {
             let search = $('#search').val();
             $.ajax({
-                url: '../models/buscarProducto.php',
+                url: '../models/buscarCargo.php',
                 type: 'POST',
                 data: { search },
                 success: function (response) {
                     let template = '';
                     if (response.trim() !== '[]') {
-                        let productos = JSON.parse(response); // Convertir de string a json
-                        productos.forEach(producto => {
+                        let cargos = JSON.parse(response); // Convertir de string a json
+                        cargos.forEach(cargo => {
                             template += `
-                                <tr productoID="${producto.id_producto}">
-                                    <td>
+                                <tr cargoID="${cargo.id_cargo}">
+                                    <td>    
                                         <div class="badge badge-light">
-                                            ${producto.id_producto} 
+                                            ${cargo.id_cargo}
                                         </div>
                                     </td>
-                                    <td> ${producto.nom_producto} </td>
-                                    <td> ${producto.descripcion} </td>
                                     <td>
-                                        <div class="badge badge-primary">
-                                            S/. ${producto.precio}
-                                        </div>    
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-secondary">
-                                            ${producto.nom_categoria} 
+                                        <div class="badge badge-success">
+                                            ${cargo.nom_cargo}
                                         </div>
                                     </td>
+                                    <td> ${cargo.descripcion} </td>
                                     <td> 
-                                        <button class="actualizar-btn btn btn-warning shadow-warning" data-bs-toggle="modal" data-bs-target="#actualizar-producto-modal"> 
+                                        <button class="actualizar-btn btn btn-warning shadow-warning" data-bs-toggle="modal" data-bs-target="#actualizar-cargo-modal"> 
                                             <i class="fas fa-pen"></i>
                                         </button> 
                                     </td>
@@ -103,32 +90,29 @@ $(document).ready(() => {
                                 </tr>`;
                         });
                     } else {
-                        template = `<tr> <td colspan="7" class="text-center"> Sin resultados de la búsqueda </td> </tr>`
-                        $('#productos-result').html(template);
+                        template = `<tr> <td colspan="5" class="text-center"> Sin resultados de la búsqueda  </td> </tr>`
+                        $('#cargos-result').html(template);
                     }
-                    $('#productos-result').html(template);
-                    $('#productos-result').show();
+                    $('#cargos-result').html(template);
+                    $('#cargos-result').show();
                 },
             })
         } else {
-            $('#productos-result').hide();
+            $('#cargos-result').hide();
         }
     });
 
-
-
-
     // ? Eliminar
-        
+
     $(document).on('click', '.eliminar-btn', function () {
         alerta_confirmacion().then((resultado) => {
             if (resultado) {
                 //
                 let element = $(this)[0].parentElement.parentElement;
-                let id = $(element).attr('productoID');
+                let id = $(element).attr('cargoID');
                 // 
                 $.ajax({
-                    url: '../models/eliminarProducto.php',
+                    url: '../models/eliminarCargo.php',
                     type: 'POST',
                     data: { id },
                     success: function (response) {
@@ -136,9 +120,9 @@ $(document).ready(() => {
                         if (respuesta != 'correcto') {
                             no_eliminado();
                         } else {
-                            fetchProductos();
-                            document.getElementById("search").value = "";
-                            $('#productos-result').hide();
+                            fetchCargos();
+                            document.getElementById("search").value = "";  
+                            $('#cargos-result').hide();
                             si_eliminado();
                         }
                     }
@@ -150,25 +134,12 @@ $(document).ready(() => {
 
 
 
-    // ? Obtener datos de la consumibles para ponerlos al modal
+    // ? Obtener datos de la categoria para ponerlos al modal
     
     $('tbody').on('click', '.actualizar-btn', function () {
-
-        let eliminar = document.getElementById('select-categorias');
-        eliminar.parentNode.removeChild(eliminar);
-
-        let contenedor = document.getElementById('contenedor');
-        const select_categorias = document.createElement('div');
-        select_categorias.id = "select-categorias";
-        select_categorias.classList.add('form-control');
-        contenedor.append(select_categorias);
-
-
         Object.keys(campos).forEach(campo => { campos[campo] = true; });
         let element = $(this)[0].parentElement.parentElement;
-        let id = $(element).attr('productoID');
-
-        $('#formulario').trigger('reset');  // ! Aún no encuentro solución para el virtual select
+        let id = $(element).attr('cargoID');
 
         document.querySelectorAll('.formulario__grupo span').forEach((i) => { i.classList.add('fa-check-circle') });
         document.querySelectorAll('.formulario__grupo span').forEach((i) => { i.classList.remove('fa-exclamation-circle') });
@@ -179,38 +150,20 @@ $(document).ready(() => {
 
         // Aquí haces una petición AJAX para obtener los datos del cliente utilizando el clienteID
         $.ajax({
-            url: '../models/obtenerProducto.php',
+            url: '../models/obtenerCargo.php',
             type: 'GET',
             data: { id },
             success: function (response) {
-
-                let producto = JSON.parse(response);
-                const categorias = producto['categoria'];
-                const datos = producto['producto'][0];
-
                 // Aquí cargas los datos del cliente en los campos del formulario en el modal
-                $('#id_producto').val(datos.id_producto);
-                $('#n_producto').val(datos.nom_producto);
-                $('#n_descripcion').val(datos.descripcion);
-                $('#n_precio').val(datos.precio);
+                let cargo = JSON.parse(response);
+                $('#id_cargo').val(cargo.id_cargo);
+                $('#n_nombre').val(cargo.nom_cargo);
+                $('#n_descripcion').val(cargo.descripcion);
                 // Carga los demás campos del formulario según corresponda
-
-                VirtualSelect.init({
-                    ele: '#select-categorias',
-                    options: categorias,
-                    search: true,
-                    required: true,
-                    selectedValue: datos.id_categoria,
-                    searchPlaceholderText: 'Buscar...',
-                    noSearchResultsText: 'No se encontraron resultados',
-                    noOptionsText: 'No hay opciones para mostrar',
-                    allOptionsSelectedText: 'Todo seleccionado',
-                    optionsSelectedText: 'Opciones seleccionadas',
-                    placeholder: `Seleccionar Categoria`
-                });
             }
         });
     });
+
 
 
     // ? ACTUALIZAR
@@ -225,14 +178,11 @@ $(document).ready(() => {
     const validarFormulario = (e) => {
 
         switch (e.target.name) {
-            case 'producto':
-                validarCampo(expresiones.producto, 'producto', e.target);
+            case 'nombre':
+                validarCampo(expresiones.nombre, 'nombre', e.target);
                 break;
             case 'descripcion':
                 validarCampo(expresiones.descripcion, 'descripcion', e.target);
-                break;
-            case 'precio':
-                validarCampo(expresiones.precio, 'precio', e.target);
                 break;
         }
     };
@@ -247,22 +197,17 @@ $(document).ready(() => {
 
     //? Cuando se de click al boton actualizar
 
-    $('#actualizar-producto-modal').on('click', '.actualizar', function () {
+    $('#actualizar-cargo-modal').on('click', '.actualizar', function () {
 
-        let select_required = $('#select-categorias');
-
-        if ( campos.producto && campos.descripcion && campos.precio && select_required.val() ) {
-            
+        if ( campos.nombre && campos.descripcion ) {
             // Ajax
             const newData = {
-                id: $('#id_producto').val(),
-                nom_producto: $('#n_producto').val(),
-                descripcion: $('#n_descripcion').val(),
-                precio: $('#n_precio').val(),
-                id_categoria: select_required.val(),
+                id: $('#id_cargo').val(),
+                nom_cargo: $('#n_nombre').val(),
+                descripcion: $('#n_descripcion').val()
             };
             $.ajax({
-                url: '../models/actualizarProducto.php',
+                url: '../models/actualizarCargo.php',
                 type: 'POST',
                 data: newData,
                 success: function (response) {
@@ -270,11 +215,11 @@ $(document).ready(() => {
                     if (respuesta === 'error') {
                         error();
                     } else {
-                        $('#actualizar-producto-modal').modal('hide');
+                        $('#actualizar-cargo-modal').modal('hide');
                         si_actualizado();
-                        fetchProductos();
+                        fetchCargos();
                         document.getElementById("search").value = "";
-                        $('#productos-result').hide();
+                        $('#cargos-result').hide();
                         // 
                         document.querySelectorAll('.formulario__grupo-correcto').forEach((i) => {
                             i.classList.remove('formulario__grupo-correcto')
@@ -287,8 +232,5 @@ $(document).ready(() => {
             contenedor_mensaje.classList.add('contenedor__mensaje-activo');
         }
     });
-
-
-
 
 });

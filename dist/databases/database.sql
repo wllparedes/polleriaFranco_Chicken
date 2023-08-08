@@ -24,7 +24,8 @@ create table producto(
 
 create table cargo(
     id_cargo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nom_cargo VARCHAR(25) NOT NULL
+    nom_cargo VARCHAR(25) NOT NULL,
+    descripcion VARCHAR(90) NOT NULL
 );
 
 create table usuario( -- empleado
@@ -173,26 +174,32 @@ create table comprobanteDeVenta(
 
 
 -- INSERT CARGO
-INSERT INTO `cargo` (`id_cargo`, `nom_cargo`) 
+INSERT INTO `cargo` (`id_cargo`, `nom_cargo`, `descripcion`) 
 VALUES 
-	(NULL, 'Almacenero'), 
-    (NULL, 'Recepcionista');	
+	(NULL, 'Almacenero', 'El almacenero se encarga de los procesos de abastecimiento.'), 
+    (NULL, 'Recepcionista', 'La recepcionista se encarga de los procesos de mantenimiento y facturación.'),	
+	(NULL, 'Mesero', 'El mesero se encarga de los procesos de ventas.'); 
 
--- INSERT USUARIO
+
+-- Definir la clave
+
+-- Insertar el usuario en la tabla usuarios
+SET @clave = 'clave_secreta';
 INSERT INTO `usuario` (`id_usuario`, `nombres`, `apellidos`, `telefono`, `dni`, `nombre_usuario`, `email`, `clave`, `id_cargo`) 
 VALUES 
-	(NULL, 'Andrea', 'Aguilar', '910446150', '31543150', 'Andrea Aguilar', 'andrea@gmail.com', SHA2('andrea', 256), '2'),
-	(NULL, 'Emma', 'Cisneros', '910446150', '32513153', 'Emma Cisneros', 'emma@gmail.com', SHA2('emma', 256), '2'),
-    (NULL, 'Kevin', 'Merino', '900116110', '00013153', 'Kevin Merino', 'kevin@gmail.com', SHA2('kevin', 256), '1');
+    (NULL, 'Joshua', 'Walter', '+51 910 446 150', '01543150', 'Joshua Walter', 'almacenero@gmail.com', AES_ENCRYPT('Almacenero123@', @clave) , '1'),
+    (NULL, 'Emma', 'Cisneros', '+51 910 446 150', '30513153', 'Emma Cisneros', 'recepcionista@gmail.com', AES_ENCRYPT('Recepcionista123@', @clave) , '2'),
+    (NULL, 'Adam', 'Paredes', '+51 900 116 110', '01013153', 'Adam Paredes', 'mesero@gmail.com', AES_ENCRYPT('Mesero123@', @clave) , '3');
+
 
 -- INSERT CLIENTES 
 
 INSERT INTO `cliente` (`id_cliente`, `razon_social`, `direccion`, `correo`, `ruc`, `numero`) 
 VALUES 
-	(NULL, 'Juan', 'Jr Alondras av 2', 'juan@gmail,com', '34341256134', '+51 987 401 095'),  
-	(NULL, 'Johan', 'Tupac Amaru Calle 2', 'johan@gmail,com', '01045678905', '+51 901 721 152'),
-	(NULL, 'Daniel', 'Av Camote Jr 5', 'daniel@gmail,com', '14221559931', '+51 918 932 146'),
-	(NULL, 'Sofia', 'Alameda Jr 4', 'sofia@gmail,com', '25671286154', '+51 941 983 311');
+	(NULL, 'Juan', 'Jr Alondras av 2', 'juan@gmail.com', '34341256134', '+51 987 401 095'),  
+	(NULL, 'Johan', 'Tupac Amaru Calle 2', 'johan@gmail.com', '01045678905', '+51 901 721 152'),
+	(NULL, 'Daniel', 'Av Camote Jr 5', 'daniel@gmail.com', '14221559931', '+51 918 932 146'),
+	(NULL, 'Sofia', 'Alameda Jr 4', 'sofia@gmail.com', '25671286154', '+51 941 983 311');
 
 -- CATEGORIA
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES

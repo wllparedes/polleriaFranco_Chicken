@@ -3,7 +3,6 @@
 
 include("./../../../../php/empezar_session.php");
 include("./../../../../php/verificar_session.php");
-include("./../../../../php/calcular-registros.php");
 
 $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../includes/recepcionista/_sidebar.php" : "./../../../../includes/mesero/_sidebar.php";
 ?>

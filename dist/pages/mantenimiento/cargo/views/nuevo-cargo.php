@@ -12,7 +12,7 @@ include("./../../../../php/verificar_session.php");
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Nueva Categoria</title>
+  <title>Nuevo Cargo</title>
   <link rel="icon" href="./../../../../assets/img/login/icon.png" type="image/x-icon">
 
   <!-- General CSS Files -->
@@ -57,17 +57,17 @@ include("./../../../../php/verificar_session.php");
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Formulario: Nueva Categoria</h1>
+            <h1>Formulario: Nuevo Cargo</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Inicio</a></div>
               <div class="breadcrumb-item">Mantenimiento</a></div>
-              <div class="breadcrumb-item">Nueva Categoria</div>
+              <div class="breadcrumb-item">Nueva Cargo</div>
             </div>
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Nueva Categoria</h2>
-            <p class="section-lead">Rellene la información requerida para poder crear una nueva categoría.
+            <h2 class="section-title">Nuevo Cargo</h2>
+            <p class="section-lead">Rellene la información requerida para poder crear una nuevo cargo.
             </p>
 
             <!-- ! FILA  -->
@@ -78,14 +78,13 @@ include("./../../../../php/verificar_session.php");
                     <h4>Formulario:</h4>
                   </div>
                   <div class="card-body">
-                    <form class="forms-sample form-cliente" id="formulario">
+                    <form class="forms-sample form-cargo" id="formulario">
 
                       <div class="row">
 
                         <!-- Grupo: Nombre-->
                         <div class="form-group col-md-6 formulario__grupo" id="grupo__nombre">
-                          <label for="nombre" class="formulario__label">Nombre de la
-                            categoria</label>
+                          <label for="nombre" class="formulario__label">Nombre del Cargo</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -93,11 +92,11 @@ include("./../../../../php/verificar_session.php");
                               </div>
                             </div>
                             <input type="text" class="form-control formulario__grupo-input" id="nombre" name="nombre"
-                              placeholder="Frutas o Bebidas">
+                              placeholder="Almacenero">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
-                            La Categoría tiene que ser de 4 a 20 dígitos y solo puede
+                            El nombre del cargo tiene que ser de 4 a 20 dígitos y solo puede
                             contener letras y
                             guion bajo.
                           </div>
@@ -107,8 +106,7 @@ include("./../../../../php/verificar_session.php");
                       <div class="row">
                         <!-- Grupo: Descripcion -->
                         <div class="form-group col-md-10 formulario__grupo" id="grupo__descripcion">
-                          <label for="descripcion" class="formulario__label">Descripción de la
-                            Categoría</label>
+                          <label for="descripcion" class="formulario__label">Descripción del Cargo</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -117,7 +115,7 @@ include("./../../../../php/verificar_session.php");
                             </div>
                             <input maxlength="250" class="form-control formulario__grupo-input" id="descripcion"
                               name="descripcion"
-                              placeholder="La palabra bebida es una palabra de uso común que se refiere a todo tipo de líquidos (naturales o artificiales) que puedan ser utilizados para el consumo humano....">
+                              placeholder="El almacenero se encarga de los procesos de abastecimiento....">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
@@ -204,7 +202,7 @@ include("./../../../../php/verificar_session.php");
   <script src="./../../../../assets/modules/sweetalert/sweetalert2.all.min.js"></script>
   <script src="./../../../../assets/js/page/modules-sweetalert.js"></script>
   <!-- Funcionalidades Pages -->
-  <script type="module" src="../controllers/NuevaCategoria.js"></script>
+  <script type="module" src="../controllers/NuevoCargo.js"></script>
   <script src="../../../../assets/js/underscore-min.js"></script>
   <script src="../../../../assets/js/scripts/redirect.js"></script>
 </body>

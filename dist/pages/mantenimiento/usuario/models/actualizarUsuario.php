@@ -12,16 +12,15 @@ $dni = trim($_POST['dni']);
 $userName = trim($_POST['userName']);
 $correo = trim($_POST['correo']);
 $password = trim($_POST['password']);
-$encrypted_password = openssl_encrypt($password, 'AES-256-ECB', $key);
 $id_cargo = (int) trim($_POST['id_cargo']);
 
 try {
     $sql = "UPDATE usuario SET nombres = ?, apellidos = ?, telefono = ?, dni = ?, 
-    nombre_usuario = ?, email = ?, clave = ?, id_cargo = ? WHERE id_usuario = ?";
+    nombre_usuario = ?, email = ?, clave = AES_ENCRYPT(?, ?), id_cargo = ? WHERE id_usuario = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssssii", $nombres, $apellidos, $numero, $dni, $userName, 
-    $correo, $encrypted_password, $id_cargo, $id);
+    $correo, $password, $key , $id_cargo, $id);
     
     $stmt->execute();
 
@@ -29,7 +28,6 @@ try {
     $stmt->close();
     echo 'correcto';
 } catch (Exception $e) {
-    echo $e;
     echo 'error';
 }
 

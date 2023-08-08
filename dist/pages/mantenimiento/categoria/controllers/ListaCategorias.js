@@ -124,7 +124,7 @@ $(document).ready(() => {
                         } else {
                             fetchCategorias();
                             document.getElementById("search").value = "";  
-                            $('#categoria-result').hide();
+                            $('#categorias-result').hide();
                             si_eliminado();
                         }
                     }
@@ -221,7 +221,7 @@ $(document).ready(() => {
                         si_actualizado();
                         fetchCategorias();
                         document.getElementById("search").value = "";
-                        $('#categoria-result').hide();
+                        $('#categorias-result').hide();
                         // 
                         document.querySelectorAll('.formulario__grupo-correcto').forEach((i) => {
                             i.classList.remove('formulario__grupo-correcto')

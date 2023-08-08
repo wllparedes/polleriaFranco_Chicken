@@ -12,13 +12,15 @@ if (isset($_POST['nombres'])) {
     $userName = $_POST['userName'];
     $correo = $_POST['correo'];
     $id_cargo = (int) $_POST['id_cargo'];
-
-    $encrypted_password = openssl_encrypt($_POST['password'], 'AES-256-ECB', $key);
+    $password = $_POST['password'];
 
     try {
-        $query = ("INSERT INTO usuario (nombres, apellidos, telefono, dni, nombre_usuario, email, clave, id_cargo) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
+        $query = "INSERT INTO usuario (nombres, apellidos, telefono, dni, nombre_usuario, email, clave, id_cargo) 
+            VALUES (?, ?, ?, ?, ?, ?, 
+                AES_ENCRYPT(?, ?), 
+            ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssssi", $nombres, $apellidos, $numero, $dni, $userName, $correo, $encrypted_password, $id_cargo);
+        $stmt->bind_param("ssssssssi", $nombres, $apellidos, $numero, $dni, $userName, $correo, $password, $key, $id_cargo);
         $stmt->execute();
 
         echo 'correcto';

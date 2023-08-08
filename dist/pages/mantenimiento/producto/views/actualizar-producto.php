@@ -87,7 +87,7 @@
             <!-- Grupo: Categoria -->
             <div class="form-group">
               <label for="n_categoria" class="formulario__label">Categoria</label>
-              <div class="input-group">
+              <div class="input-group" id="contenedor">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
                     <i class="fas fa-certificate"></i>

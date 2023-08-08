@@ -81,7 +81,7 @@ $(document).ready(() => {
                         contenedor_mensaje.classList.remove('contenedor__mensaje-activo');
                         si_registrado();
                         $('#formulario').trigger('reset');
-                        // redireccionar("lista-usuarios")
+                        redireccionar("lista-usuarios");
                         // 
                     }
                 },

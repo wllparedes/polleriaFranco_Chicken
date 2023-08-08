@@ -154,11 +154,21 @@ $(document).ready(() => {
     // ? Obtener datos de la consumibles para ponerlos al modal
     
     $('tbody').on('click', '.actualizar-btn', function () {
+        let eliminar = document.getElementById('select-categorias');
+        eliminar.parentNode.removeChild(eliminar);
+
+        let contenedor = document.getElementById('contenedor');
+        const select_categorias = document.createElement('div');
+        select_categorias.id = "select-categorias";
+        select_categorias.classList.add('form-control');
+        contenedor.append(select_categorias);
+
+
         Object.keys(campos).forEach(campo => { campos[campo] = true; });
         let element = $(this)[0].parentElement.parentElement;
         let id = $(element).attr('consumibleID');
 
-        $('#formulario').trigger('reset');  // ! Aún no encuentro solución para el virtual select
+        $('#formulario').trigger('reset'); 
 
         document.querySelectorAll('.formulario__grupo span').forEach((i) => { i.classList.add('fa-check-circle') });
         document.querySelectorAll('.formulario__grupo span').forEach((i) => { i.classList.remove('fa-exclamation-circle') });
@@ -173,13 +183,31 @@ $(document).ready(() => {
             type: 'GET',
             data: { id },
             success: function (response) {
-                // Aquí cargas los datos del cliente en los campos del formulario en el modal
+
                 let consumible = JSON.parse(response);
-                $('#id_consumible').val(consumible.id_consumible);
-                $('#n_consumible').val(consumible.nom_consumible);
-                $('#n_descripcion').val(consumible.descripcion);
-                $('#n_precio').val(consumible.precio);
+                const categorias = consumible['categoria'];
+                const datos = consumible['consumible'][0];
+
+                // Aquí cargas los datos del cliente en los campos del formulario en el modal
+                $('#id_consumible').val(datos.id_consumible);
+                $('#n_consumible').val(datos.nom_consumible);
+                $('#n_descripcion').val(datos.descripcion);
+                $('#n_precio').val(datos.precio);
                 // Carga los demás campos del formulario según corresponda
+
+                VirtualSelect.init({
+                    ele: '#select-categorias',
+                    options: categorias,
+                    search: true,
+                    required: true,
+                    selectedValue: datos.id_categoria,
+                    searchPlaceholderText: 'Buscar...',
+                    noSearchResultsText: 'No se encontraron resultados',
+                    noOptionsText: 'No hay opciones para mostrar',
+                    allOptionsSelectedText: 'Todo seleccionado',
+                    optionsSelectedText: 'Opciones seleccionadas',
+                    placeholder: `Seleccionar Categoria`
+                });
             }
         });
     });
