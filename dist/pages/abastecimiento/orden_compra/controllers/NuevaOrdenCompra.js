@@ -1,28 +1,24 @@
-// ? Nuevo comprobante
+// ? Nueva orden de compra
 
 $(document).ready(() => {
 
-
     let contenedor_mensaje = document.getElementById('contenedor__mensaje');
-
 
     $('#formulario').submit(function (e) {
         e.preventDefault();
 
-        let select_cliente = $('#select-cliente');
-        let select_pedido = $('#select-pedido');
-        let select_metodo = $('#select-metodos');
+        let select_proveedor = $('#select-proveedor');
+        let select_requerimiento = $('#select-requerimiento');
 
-        if ( !_.isEmpty(select_pedido.val().trim()) && !_.isEmpty(select_metodo.val().trim()) ) {
-                
+        if ( !_.isEmpty(select_proveedor.val().trim()) && !_.isEmpty(select_requerimiento.val().trim()) ) {
+
             const postData = {
-                id_pedido: select_pedido.val(),
-                metodo_pago: select_metodo.val(),
-                id_cliente: select_cliente.val(),
+                id_proveedor: select_proveedor.val(),
+                id_req: select_requerimiento.val(),
             };
 
             $.ajax({
-                url: '../models/nuevoComprobante.php',
+                url: '../models/nuevaOrdenCompra.php',
                 type: 'POST',
                 data: postData,
                 success: function (response) {
@@ -30,18 +26,17 @@ $(document).ready(() => {
                     if (respuesta != "correcto") {
                         error();
                     } else {
-
                         contenedor_mensaje.classList.remove('contenedor__mensaje-activo');
                         // 
                         si_registrado();
                         $('#formulario').trigger('reset');
-                        $('.advCliente').show();
-                        $('.advPedido').show();
+                        $('.advProveedor').show();
+                        $('.advRequerimiento').show();
                         $('#contenido').html('');
-                        $('#contenido_pedido').html('');
+                        $('#contenido_requerimiento').html('');
                         table.classList.remove('table__seleccionados-activo');
-                        table_pedido.classList.remove('table__seleccionados_dos-activo');
-                        redireccionar("lista-comprobantes");
+                        table_requerimiento.classList.remove('table__seleccionados_dos-activo');
+                        redireccionar("lista-ordenes-compras");
                     }
                 },
             });

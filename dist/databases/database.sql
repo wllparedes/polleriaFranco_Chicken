@@ -2,8 +2,21 @@
 --  BASE DE DATOS: "FRANCO CHICKEN"
 -- Nota: Cuando veas el _detalle_ es parte de la normalización
 
-create database PolleriaFrancoChiken;
-use PolleriaFrancoChiken;
+create database PolleriaFrancoChicken;
+use PolleriaFrancoChicken;
+
+-- Info de la empresa "Polleria Franco Chicken"
+
+create table Empresa(
+	id_empresa INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	razon_social VARCHAR(20),
+	ruc VARCHAR(11),
+	direccion VARCHAR(80),
+	ciudad VARCHAR(20),
+	email VARCHAR(30),
+	telefono VARCHAR(15),
+	telefono_fijo VARCHAR(15)
+);
 
 -- ABASTECIMIENTO
 
@@ -68,20 +81,22 @@ create table detalle_requerimiento(
 create table proveedor(
     id_proveedor INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     razon_social VARCHAR(20) NOT NULL,
-    direccion VARCHAR(40) NOT NULL,
-    ruc VARCHAR(20) NOT NULL,
-    numero VARCHAR(20) NOT NULL,
-    correo VARCHAR(20) NOT NULL
+    direccion VARCHAR(30) NOT NULL,
+    ruc VARCHAR(11) NOT NULL,
+    numero VARCHAR(15) NOT NULL,
+    correo VARCHAR(30) NOT NULL
 );
 
 create table ordenDeCompra(
     id_ordenDeCompra INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    obs VARCHAR(100) NOT NULL,
     fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     estado BOOLEAN NOT NULL,
+	igv DECIMAL(8,2) NOT NULL,
     total DECIMAL(8,2) NOT NULL,
     id_proveedor INT NOT NULL,
     id_req INT NOT NULL,
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa),
     FOREIGN KEY (id_req) REFERENCES requerimiento(id_req),
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor)
 );
@@ -159,19 +174,9 @@ create table comprobanteDeVenta(
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 );
 
-
--- COSAS EXTRA DE LOS PROCESOS
-
--- create table infoEmpresa(
--- id_empresa INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
--- razon_social VARCHAR(100),
--- ruc VARCHAR(100),
--- direccion VARCHAR(100),
--- ciudad VARCHAR(100),
--- email VARCHAR(100),
--- telefono VARCHAR(100)
--- );
-
+-- INSERT EMPRESA
+INSERT INTO `empresa` (`id_empresa`, `razon_social`, `ruc`, `direccion`, `ciudad`, `email`, `telefono`, `telefono_fijo`) VALUES 
+	(NULL, 'Franco Chicken', '09072834561', 'Urb. el exito Mz. C Lt. 19 – San Gregorio', 'Lima', 'Sin correo.', '+51 946 484 077', '(51) 356 2041');
 
 -- INSERT CARGO
 INSERT INTO `cargo` (`id_cargo`, `nom_cargo`, `descripcion`) 
@@ -182,7 +187,6 @@ VALUES
 
 
 -- Definir la clave
-
 -- Insertar el usuario en la tabla usuarios
 SET @clave = 'clave_secreta';
 INSERT INTO `usuario` (`id_usuario`, `nombres`, `apellidos`, `telefono`, `dni`, `nombre_usuario`, `email`, `clave`, `id_cargo`) 
@@ -201,10 +205,24 @@ VALUES
 	(NULL, 'Daniel', 'Av Camote Jr 5', 'daniel@gmail.com', '14221559931', '+51 918 932 146'),
 	(NULL, 'Sofia', 'Alameda Jr 4', 'sofia@gmail.com', '25671286154', '+51 941 983 311');
 
+-- INSERT PROVEEDORES
+INSERT INTO `proveedor` (`id_proveedor`, `razon_social`, `direccion`, `ruc`, `numero`, `correo`) VALUES 
+(NULL, 'Alejandro Villanueva', 'Puente Camote Jr Plata', '00728817211', '+51 943 433 034', 'alejandrosimp@gmail.com'), 
+(NULL, 'Adam Torres', 'Jr La florida Calle 2', '01223637811', '+51 923 322 032', 'adam@gmail.com'), 
+(NULL, 'Melissa Flores', 'Los molinos Calle 2', '90230067731', '+51 932 323 123', 'melissa@gmail.com');
+
 -- CATEGORIA
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
     (NULL, 'Platillo', 'Los platillos son las comidas tradicionales para la venta a nuestros clientes.'), 
-    (NULL, 'Bebida', 'Las bebidas son los jugos hechos de fruta para refrescar a los clientes. ');
+    (NULL, 'Bebida', 'Las bebidas son los jugos hechos de fruta para refrescar a los clientes.'),
+    (NULL, 'Cereal', 'Sin descripción.'),
+    (NULL, 'Verdura', 'Sin descripción');
+
+-- PRODUCTOS
+INSERT INTO `producto` (`id_producto`, `nom_producto`, `precio`, `id_categoria`, `descripcion`) VALUES 
+	(NULL, 'Arroz', '4', '3', 'Sin descripción.'), 
+    (NULL, 'Lechuga', '5.10', '4', 'Sin descripción.');
+
 
 -- CONSUMIBLES
 INSERT INTO `consumible` (`id_consumible`, `nom_consumible`, `descripcion`, `precio`, `id_categoria`) 
@@ -260,9 +278,35 @@ AND p.id_pedido = dp.id_pedido
 AND dp.id_consumible = c.id_consumible 
 AND c.id_categoria = cate.id_categoria;
 
+CREATE VIEW VER_REQUERIMIENTO AS
+SELECT r.*, dr.id_producto, dr.cantidad, p.nom_producto, p.descripcion, p.precio, cate.nombre as nom_categoria
+FROM requerimiento r, detalle_requerimiento dr, producto p, categoria cate
+WHERE r.id_req = dr.id_req
+AND dr.id_producto = p.id_producto
+AND p.id_categoria = cate.id_categoria;
+
+CREATE VIEW VER_ORDEN AS
+SELECT odc.id_ordenDeCompra as id_odc, odc.fecha_hora as fecha_hora_odc, odc.estado as estado_odc, 
+odc.total, odc.igv, 
+r.*, 
+dr.id_producto, dr.cantidad, 
+p.nom_producto, p.descripcion, p.precio, 
+cate.nombre as nom_categoria, em.*,
+prov.id_proveedor, prov.razon_social as razon_social_prov, prov.direccion as direccion_prov, prov.ruc as ruc_prov, prov.numero as numero_prov, prov.correo as correo_prov
+FROM ordendecompra odc,  requerimiento r, detalle_requerimiento dr, producto p, categoria cate, Empresa em, proveedor prov
+WHERE odc.id_req = r.id_req
+AND r.id_req = dr.id_req
+AND dr.id_producto = p.id_producto
+AND p.id_categoria = cate.id_categoria
+AND odc.id_empresa = em.id_empresa
+AND odc.id_proveedor = prov.id_proveedor;
+
+SELECT * FROM VER_ORDEN WHERE id_odc = 1;
+
+SELECT * FROM empresa;
+
+SELECT * FROM VER_REQUERIMIENTO WHERE id_req = 2;
 SELECT * FROM VER_COMPROBANTE WHERE id_cdv = 25;
-
 select * from cliente where razon_social = 'Juan';
-
 SELECT * FROM comprobanteDeVenta;
 SELECT * FROM VER_PEDIDO WHERE id_pedido = 8;

@@ -30,8 +30,8 @@
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-bag"></i>
           <span>Ordenes de Compra</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="../../../venta/pedido/views/nuevo-pedido.html">Nueva Orden de C.</a></li>
-          <li><a class="nav-link" href="layout-transparent.html">Lista de Ordenes</a></li>
+          <li><a class="nav-link" href="../../../abastecimiento/orden_compra/views/nueva-orden-compra.php">Nueva Orden de C.</a></li>
+          <li><a class="nav-link" href="../../../abastecimiento/orden_compra/views/lista-ordenes-compras.php">Lista de Ordenes</a></li>
         </ul>
       </li>
 

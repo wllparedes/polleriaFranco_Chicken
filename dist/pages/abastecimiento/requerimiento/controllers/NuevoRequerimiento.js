@@ -73,7 +73,7 @@ $(document).ready(() => {
                         $('.advProducto').show();
                         $('#contenido').html('');
                         table.classList.remove('table__seleccionados-activo');
-                        // redireccionar("lista-pedidos")
+                        redireccionar("lista-requerimientos");
                     }
                 },
             });
