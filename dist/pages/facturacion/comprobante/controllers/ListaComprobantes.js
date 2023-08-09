@@ -176,7 +176,6 @@ $(document).ready(() => {
             data: { id },
             success: function (response) {
                 let detalle_comprobante = JSON.parse(response);
-                console.log(detalle_comprobante)
                 window.location.href = 'detalle-comprobante.php?comprobante_id=' + id + '&detalle=' + encodeURIComponent(JSON.stringify(detalle_comprobante));
             }
         })

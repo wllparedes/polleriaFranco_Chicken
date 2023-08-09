@@ -22,8 +22,6 @@ while ($row = $result->fetch_assoc()) {
         $hora = $partes[1];
         $estado = $row['estado'] == 0 ? 'No activo' : 'Activo';
         $sub_total = $row['sub_total'];
-        $igv = $sub_total * 0.18;
-        $total = $sub_total + $igv;
 
         $json['id_pedido'] = $row['id_pedido'];
         $json['nom_cliente'] = $row['nom_cliente'];
@@ -33,8 +31,6 @@ while ($row = $result->fetch_assoc()) {
         $json['n_mesa'] = $row['n_mesa'];
         $json['observacion'] = $row['observacion'];
         $json['sub_total'] = 'S/. ' . $sub_total;
-        $json['igv'] = 'S/. ' . $igv;
-        $json['total'] = 'S/. ' . $total;
     }
 
     $json['productos'][] = array(

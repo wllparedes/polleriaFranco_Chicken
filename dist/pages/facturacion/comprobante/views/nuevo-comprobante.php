@@ -329,19 +329,6 @@ include("./../../../../php/verificar_session.php");
                                     <div class="invoice-detail-value" id="sub_total"></div>
                                   </h5>
                                 </div>
-                                <div class="invoice-detail-item">
-                                  <div class="invoice-detail-name">IGV</div>
-                                  <h5>
-                                    <div class="invoice-detail-value" id="igv"></div>
-                                  </h5>
-                                </div>
-                                <hr class="mt-2 mb-2">
-                                <div class="invoice-detail-item">
-                                  <div class="invoice-detail-name">Total</div>
-                                  <h4>
-                                    <div class="invoice-detail-value invoice-detail-value-lg" id="total"></div>
-                                  </h4>
-                                </div>
                               </div>
                             </div>
                           </div>

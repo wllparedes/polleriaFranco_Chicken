@@ -24,9 +24,6 @@ $(document).ready(() => {
                     $('#mesa').val(info_pedido['n_mesa']);
                     $('#observacion').val(info_pedido['observacion']);
                     $('#sub_total').text(info_pedido['sub_total']);
-                    $('#igv').text(info_pedido['igv']);
-                    $('#total').text(info_pedido['total']);
-
 
                     // ? añadir a la tabla
                     let template = '';
