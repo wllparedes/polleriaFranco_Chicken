@@ -20,7 +20,7 @@ include("./../../../../php/verificar_session.php");
   <link rel="stylesheet" href="./../../../../assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-  <!-- <link rel="stylesheet" href="./../../../../assets/modules/bootstrap-daterangepicker/daterangepicker.css"> -->
+  <link rel="stylesheet" href="./../../../../assets/modules/bootstrap-daterangepicker/daterangepicker.css">
   <!-- <link rel="stylesheet" href="./../../../../assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css"> -->
   <!-- <link rel="stylesheet" href="./../../../../assets/modules/select2/dist/css/select2.min.css"> -->
   <!-- <link rel="stylesheet" href="./../../../../assets/modules/jquery-selectric/selectric.css"> -->
@@ -80,6 +80,23 @@ include("./../../../../php/verificar_session.php");
                   </div>
                   <div class="card-body">
                     <form class="forms-sample form-orden-compra" id="formulario">
+
+                      <div class="row">
+                        <!-- Grupo: Razon Social -->
+                        <div class="form-group col-md-6 formulario__grupo" id="grupo__fecha_hora">
+                          <label>Fecha y Hora estimada de entrega</label>
+                          <div class="formulario__grupo-input input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fas fa-calendar"></i>
+                              </div>
+                            </div>
+                            <input type="text" class="form-control datetimepicker" id="fecha_hora" name="fecha_hora">
+                          </div>
+                        </div>
+                      </div>
+
+                      <hr class="bg-secondary">
 
                       <div class="row">
                         <!-- Grupo: Btn Seleccionar proveedor -->
@@ -192,7 +209,8 @@ include("./../../../../php/verificar_session.php");
 
                           <!-- Grupo: nombre  -->
                           <div class="form-group col-md-6 formulario__grupo" id="grupo__registrador">
-                            <label for="registrador" class="formulario__label">Nombres y Apellidos del registrador</label>
+                            <label for="registrador" class="formulario__label">Nombres y Apellidos del
+                              registrador</label>
                             <div class="formulario__grupo-input input-group">
                               <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -368,7 +386,7 @@ include("./../../../../php/verificar_session.php");
     <script src="./../../../../assets/modules/cleave-js/dist/addons/cleave-phone.pe.js"></script> -->
   <!-- darle formato a los inputs para telef -->
   <script src="./../../../../assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
-  <!-- <script src="./../../../../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script> -->
+  <script src="./../../../../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
   <!-- Para las fechas -->
   <!-- <script src="./../../../../assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script> -->
   <!-- Para pickear los colores -->

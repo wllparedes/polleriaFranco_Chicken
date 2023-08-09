@@ -218,7 +218,7 @@ $requerimiento = $detalleOrden['requerimiento'][0];
 
                   <!-- Grupo: fecha -->
                   <div class="form-group col-md-4 formulario__grupo" id="grupo__fecha_odc">
-                    <label for="fecha_odc" class="formulario__label">Fecha</label>
+                    <label for="fecha_odc" class="formulario__label">Fecha de registro</label>
                     <div class="formulario__grupo-input input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -236,7 +236,7 @@ $requerimiento = $detalleOrden['requerimiento'][0];
 
                   <!-- Grupo: hora -->
                   <div class="form-group col-md-4 formulario__grupo" id="grupo__hora_odc">
-                    <label for="hora_odc" class="formulario__label">Hora</label>
+                    <label for="hora_odc" class="formulario__label">Hora de registro</label>
                     <div class="formulario__grupo-input input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -271,6 +271,36 @@ $requerimiento = $detalleOrden['requerimiento'][0];
                       </div>
                       <input type="text" disabled class="form-control" id="total_odc" name="total_odc"
                         value="<?php echo $orden['total'] ?> ">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <!-- Grupo: fecha -->
+                  <div class="form-group col-md-4 formulario__grupo" id="grupo__fecha_entrega">
+                    <label for="fecha_entrega" class="formulario__label">Fecha de entrega</label>
+                    <div class="formulario__grupo-input input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-calendar"></i>
+                        </div>
+                      </div>
+                      <input type="text" disabled class="form-control" id="fecha_entrega" name="fecha_entrega"
+                        value="<?php echo $orden['fecha_entrega'] ?> ">
+                    </div>
+                  </div>
+                  <!-- Grupo: hora -->
+                  <div class="form-group col-md-4 formulario__grupo" id="grupo__hora_entrega">
+                    <label for="hora_entrega" class="formulario__label">Hora de entrega</label>
+                    <div class="formulario__grupo-input input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-clock"></i>
+                        </div>
+                      </div>
+                      <input type="text" disabled class="form-control" id="hora_entrega" name="hora_entrega"
+                        value="<?php echo $orden['hora_entrega'] ?> ">
                     </div>
                   </div>
 

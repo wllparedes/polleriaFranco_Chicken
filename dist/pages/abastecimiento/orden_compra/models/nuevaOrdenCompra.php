@@ -10,6 +10,7 @@ if (empty($_POST['id_proveedor']) || empty($_POST['id_req'])) {
     $id_req = $_POST['id_req'];
     $id_proveedor = $_POST['id_proveedor'];
     $id_empresa = 1;
+    $fecha_hora_entrega = $_POST['fecha_hora'];
 
     $estado = 0;
     $estado_nuevo = 1;
@@ -29,10 +30,10 @@ if (empty($_POST['id_proveedor']) || empty($_POST['id_req'])) {
     $monto_final = (float) $sub_total + $igv;
 
     // ? Insert orden de compra
-    $query2 = "INSERT INTO ordendecompra (estado, igv, total, id_proveedor, id_req, id_empresa)
-    VALUES (?, ?, ?, ?, ?, ?)";
+    $query2 = "INSERT INTO ordendecompra (estado, igv, total, id_proveedor, id_req, id_empresa, fecha_hora_entrega)
+    VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt->prepare($query2);
-    $stmt->bind_param('iddiii', $estado, $igv, $monto_final, $id_proveedor, $id_req, $id_empresa);
+    $stmt->bind_param('iddiiis', $estado, $igv, $monto_final, $id_proveedor, $id_req, $id_empresa, $fecha_hora_entrega);
     $stmt->execute();
     // ? Fin del insert comprobante de Venta
 

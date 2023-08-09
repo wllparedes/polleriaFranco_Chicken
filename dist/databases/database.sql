@@ -96,6 +96,7 @@ create table ordenDeCompra(
     id_proveedor INT NOT NULL,
     id_req INT NOT NULL,
     id_empresa INT NOT NULL,
+    fecha_hora_entrega TIMESTAMP NOT NULL,
     FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa),
     FOREIGN KEY (id_req) REFERENCES requerimiento(id_req),
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor)
@@ -287,7 +288,7 @@ AND p.id_categoria = cate.id_categoria;
 
 CREATE VIEW VER_ORDEN AS
 SELECT odc.id_ordenDeCompra as id_odc, odc.fecha_hora as fecha_hora_odc, odc.estado as estado_odc, 
-odc.total, odc.igv, 
+odc.total, odc.igv, odc.fecha_hora_entrega, 
 r.*, 
 dr.id_producto, dr.cantidad, 
 p.nom_producto, p.descripcion, p.precio, 

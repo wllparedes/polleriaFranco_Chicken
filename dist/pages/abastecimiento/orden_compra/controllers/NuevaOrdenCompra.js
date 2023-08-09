@@ -9,12 +9,14 @@ $(document).ready(() => {
 
         let select_proveedor = $('#select-proveedor');
         let select_requerimiento = $('#select-requerimiento');
+        let fecha_hora = $('#fecha_hora');
 
-        if ( !_.isEmpty(select_proveedor.val().trim()) && !_.isEmpty(select_requerimiento.val().trim()) ) {
+        if ( !_.isEmpty(select_proveedor.val().trim()) && !_.isEmpty(select_requerimiento.val().trim()) && fecha_hora.val() ) {
 
             const postData = {
                 id_proveedor: select_proveedor.val(),
                 id_req: select_requerimiento.val(),
+                fecha_hora: fecha_hora.val()
             };
 
             $.ajax({

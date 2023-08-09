@@ -25,6 +25,10 @@ while ($row = $result->fetch_assoc()) {
         $fecha_odc = $partes_odc[0];
         $hora_odc = $partes_odc[1];
         $estado_odc = $row['estado_odc'] == 0 ? "No activo" : "Activo";
+        
+        $partes_entrega = explode(" ", $row['fecha_hora_entrega']);
+        $fecha_entrega = $partes_entrega[0];
+        $hora_entrega = $partes_entrega[1];
 
         // * Requerimiento de compra
         $partes = explode(" ", $row['fecha_hora']);
@@ -42,6 +46,8 @@ while ($row = $result->fetch_assoc()) {
             'estado' => $estado_odc,
             'total' => 'S/. ' . $row['total'],
             'igv' => 'S/. ' . $row['igv'],
+            'fecha_entrega' => $fecha_entrega,
+            'hora_entrega' => $hora_entrega
         );
 
         // ? Pedido : Datos
