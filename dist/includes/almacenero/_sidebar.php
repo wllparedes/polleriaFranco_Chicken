@@ -40,8 +40,8 @@
       <li class="dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-dollar-sign"></i> <span>Comprobante de C.</span></a>
         <ul class="dropdown-menu">
-          <li><a href="auth-forgot-password.html">Registrar Comprobante</a></li>
-          <li><a href="auth-forgot-password.html">Lista de  Comprobantes</a></li>
+          <li><a href="../../../abastecimiento/comprobante/views/nuevo-comprobante.php">Registrar Comprobante</a></li>
+          <li><a href="../../../abastecimiento/comprobante/views/lista-comprobantes.php">Lista de  Comprobantes</a></li>
         </ul>
       </li>
 

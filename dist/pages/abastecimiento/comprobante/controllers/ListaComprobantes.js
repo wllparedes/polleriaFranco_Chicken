@@ -13,40 +13,25 @@ $(document).ready(() => {
                 let template = '';
 
                 if (response.trim() === '[]') {
-                    tablaVacia.innerHTML = `<tr> <td colspan="11" class="text-center"> <h6>Sin registros por el momento</h6> </td> </tr>`;
+                    tablaVacia.innerHTML = `<tr> <td colspan="8" class="text-center"> <h6>Sin registros por el momento</h6> </td> </tr>`;
                 } else {
                     comprobantes.forEach(comprobante => {
                         template += `
-                        <tr comprobanteID="${comprobante.id_comprobante}">
+                        <tr comprobanteID="${comprobante.id_cdv}">
                             <td>
                                 <div class="badge badge-light">
-                                    ${comprobante.id_comprobante} 
+                                    ${comprobante.id_cdv} 
                                 </div>
                             </td>
-                            <td> ${comprobante.id_pedido} </td>
-                            <td> ${comprobante.nombre} </td>
+                            <td> ${comprobante.id_odc} </td>
+                            <td> ${comprobante.observacion} </td>
+                            <td> ${comprobante.archivo} </td>
                             <td> ${comprobante.fecha} </td>
                             <td>
                                 <div class="badge badge-info">
                                     ${comprobante.hora} 
                                 </div>
                             </td>
-                            <td>
-                                <div class="badge badge-success">
-                                    S/. ${comprobante.igv} 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="badge badge-primary">
-                                    S/. ${comprobante.total}
-                                </div>    
-                            </td>
-                            <td>
-                                <div class="badge badge-secondary">
-                                    ${comprobante.metodo_pago} 
-                                </div>
-                            </td>
-                            <td> ${comprobante.estado} </td>
                             <td> 
                                 <button class="ver-btn btn btn-warning shadow-warning"> 
                                     <i class="fas fa-eye"></i>
@@ -82,35 +67,21 @@ $(document).ready(() => {
                         let comprobantes = JSON.parse(response); // Convertir de string a json
                         comprobantes.forEach(comprobante => {
                             template += `
-                                <tr comprobanteID="${comprobante.id_comprobante}">
+                                <tr comprobanteID="${comprobante.id_cdv}">
                                     <td>
                                         <div class="badge badge-light">
-                                            ${comprobante.id_comprobante} 
+                                            ${comprobante.id_cdv} 
                                         </div>
                                     </td>
-                                    <td> ${comprobante.id_pedido} </td>
-                                    <td> ${comprobante.nombre} </td>
+                                    <td> ${comprobante.id_odc} </td>
+                                    <td> ${comprobante.observacion} </td>
+                                    <td> ${comprobante.archivo} </td>
                                     <td> ${comprobante.fecha} </td>
                                     <td>
                                         <div class="badge badge-info">
                                             ${comprobante.hora} 
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="badge badge-success">
-                                            S/. ${comprobante.igv} </td>
-                                        </div>
-                                    <td>
-                                        <div class="badge badge-primary">
-                                            S/. ${comprobante.total}
-                                        </div>    
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-secondary">
-                                            ${comprobante.metodo_pago} 
-                                        </div>
-                                    </td>
-                                    <td> ${comprobante.estado} </td>
                                     <td> 
                                         <button class="ver-btn btn btn-warning shadow-warning"> 
                                             <i class="fas fa-eye"></i>
@@ -124,7 +95,7 @@ $(document).ready(() => {
                                 </tr>`;
                         });
                     } else {
-                        template = `<tr> <td colspan="11" class="text-center"> Sin resultados de la búsqueda </td> </tr>`
+                        template = `<tr> <td colspan="8" class="text-center"> Sin resultados de la búsqueda </td> </tr>`
                         $('#comprobantes-result').html(template);
                     }
                     $('#comprobantes-result').html(template);
@@ -152,7 +123,7 @@ $(document).ready(() => {
                     success: function (response) {
                         let respuesta = response.trim();
                         if (respuesta != 'correcto') {
-                            no_eliminado();
+                            error();
                         } else {
                             fetchComprobantes();
                             document.getElementById("search").value = "";
@@ -166,18 +137,17 @@ $(document).ready(() => {
         });
     });
 
-    // ? Ver Pedido
+    // ? Ver PDF
     $(document).on('click', '.ver-btn', function () {
         //
         let element = $(this)[0].parentElement.parentElement;
         let id = $(element).attr('comprobanteID');
         $.ajax({
-            url: '../models/detalleComprobante.php',
+            url: '../models/verComprobante.php',
             type: 'POST',
             data: { id },
             success: function (response) {
-                let detalle_comprobante = JSON.parse(response);
-                window.location.href = 'detalle-comprobante.php?comprobante_id=' + id + '&detalle=' + encodeURIComponent(JSON.stringify(detalle_comprobante));
+                window.open( response, '_blank');
             }
         })
         // 
