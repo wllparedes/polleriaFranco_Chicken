@@ -42,7 +42,7 @@ include("./../../../../php/verificar_session.php");
   <!-- /END GA -->
 </head>
 
-<body id="my-scrollbar">
+<body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -245,11 +245,6 @@ include("./../../../../php/verificar_session.php");
   <!-- <script src="./../../../../assets/modules/select2/dist/js/select2.full.min.js"></script> Select2> -->
   <!-- Estilos a los select -->
   <!-- <script src="./../../../../assets/modules/jquery-selectric/jquery.selectric.min.js"></script> -->
-  
-  <!-- Scrollbar smooth-scrollbar -->
-  <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
-  <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
-  <script src="./../../../../assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
   <script src="./../../../../assets/js/page/forms-advanced-forms.js"></script>

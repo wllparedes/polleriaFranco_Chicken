@@ -45,7 +45,7 @@ $productos = $detalleComprobante['productos'];
   <!-- /END GA -->
 </head>
 
-<body id="my-scrollbar">
+<body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -505,10 +505,6 @@ $productos = $detalleComprobante['productos'];
   <script src="./../../../../assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-  <!-- Scrollbar smooth-scrollbar -->
-  <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
-  <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
-  <script src="./../../../../assets/js/custom.js"></script>
   <!-- Page Specific JS File -->
 
   <!-- Template JS File -->

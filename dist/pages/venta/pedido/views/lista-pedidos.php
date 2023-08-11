@@ -35,7 +35,7 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
   <!-- /END GA -->
 </head>
 
-<body id="my-scrollbar">
+<body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -140,10 +140,6 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
 
   <!-- Template JS File -->
   <script src="./../../../../assets/js/scripts.js"></script>
-  <!-- Scrollbar smooth-scrollbar -->
-  <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
-  <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
-  <script src="./../../../../assets/js/custom.js"></script>
 
   <!-- Sweet Alert -->
   <script src="./../../../../assets/modules/sweetalert/sweetalert2.all.min.js"></script>

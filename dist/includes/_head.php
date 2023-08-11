@@ -21,9 +21,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="./../../../../assets/css/style.css">
     <link rel="stylesheet" href="./../../../../assets/css/components.css">
-    <!-- Smooth my-scrollbar -->
-    <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
-    <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -35,9 +33,7 @@
     <!-- /END GA -->
 </head>
 
-<body id="my-scrollbar">
+<body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
-            <!-- Smooth Scroll -->
-            <script src="./../../../../assets/js/custom.js"></script>

@@ -45,7 +45,7 @@ include("./../../../../php/verificar_session.php");
   <!-- /END GA -->
 </head>
 
-<body id="my-scrollbar">
+<body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -228,10 +228,6 @@ include("./../../../../php/verificar_session.php");
 
   <!-- Page Specific JS File -->
   <!-- <script src="./../../../../assets/js/page/forms-advanced-forms.js"></script> -->
-  <!-- Scrollbar smooth-scrollbar -->
-  <script src="./../../../../assets/modules/smooth-scrollbar/smooth-scrollbar.js"></script>
-  <script src="./../../../../assets/modules/smooth-scrollbar/plugins/overscroll.js"></script>
-  <script src="./../../../../assets/js/custom.js"></script>
 
   <!-- Template JS File -->
   <script src="./../../../../assets/js/scripts.js"></script>
