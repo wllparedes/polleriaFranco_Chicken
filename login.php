@@ -29,7 +29,7 @@
         <div></div>
       </div>
 
-      <button id="btnIngresar">Ingresar</button>
+      <button id="btnIngresar">Ingresar </button>
     </form>
   </div>
 
