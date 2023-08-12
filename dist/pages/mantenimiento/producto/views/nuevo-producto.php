@@ -145,7 +145,7 @@ include("./../../../../php/verificar_session.php");
                         </div>
 
                         <!-- Grupo: Categoria -->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__categoria">
+                        <div class="form-group col-md-3 formulario__grupo" id="grupo__categoria">
                           <label for="categoria" class="formulario__label">Categoria</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">

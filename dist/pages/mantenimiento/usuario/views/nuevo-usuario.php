@@ -223,7 +223,7 @@ include("./../../../../php/verificar_session.php");
                         </div>
 
                         <!-- Grupo: Cargo -->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__cargo">
+                        <div class="form-group col-md-3 formulario__grupo" id="grupo__cargo">
                           <label for="cargo" class="formulario__label">Cargo</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">

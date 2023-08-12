@@ -105,7 +105,7 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                         </div>
 
                         <!-- Grupo: N° de Mesa  -->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__descripcion">
+                        <div class="form-group col-md-3 formulario__grupo" id="grupo__descripcion">
                           <label for="descripcion" class="formulario__label">Número de Mesa (Opcional)</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">

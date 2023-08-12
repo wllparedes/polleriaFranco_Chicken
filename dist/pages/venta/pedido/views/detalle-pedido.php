@@ -3,6 +3,7 @@
 
 include("./../../../../php/empezar_session.php");
 include("./../../../../php/verificar_session.php");
+$ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../includes/recepcionista/_sidebar.php" : "./../../../../includes/mesero/_sidebar.php";
 
 $pedido_id = $_GET['pedido_id'];
 $detallePedidoJSON = $_GET['detalle'];
@@ -47,7 +48,7 @@ $detallePedido = json_decode(urldecode($detallePedidoJSON), true);
 
       <?php include("./../../../../includes/_navbar.php") ?>
 
-      <?php include("./../../../../includes/recepcionista/_sidebar.php") ?>
+      <?php include($ruta_sidebar) ?>
 
 
       <!-- Main content -->
