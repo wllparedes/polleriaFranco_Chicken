@@ -10,6 +10,7 @@ $(document).ready(() => {
                 multiple: true,
                 search: true,
                 required: true,
+                showSelectedOptionsFirst: true,
                 searchPlaceholderText: 'Buscar...',
                 noSearchResultsText: 'No se encontraron resultados',
                 noOptionsText: 'No hay consumibles para mostrar',

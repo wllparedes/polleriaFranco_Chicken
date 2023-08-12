@@ -15,13 +15,7 @@ while ($row = $result->fetch_assoc()) {
     $partes = explode(" ", $row['fecha_hora']);
     $fecha = $partes[0];
     $hora = $partes[1];
-    $estado = "";
-
-    if ($row['estado'] == 0) {
-        $estado = "<div class='badge badge-danger'>No activo</div>";
-    }else{
-        $estado = "<div class='badge badge-success'>Activo</div>";
-    }
+    $estado = $row['estado'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>";
 
     $json[] = array(
         'id_pedido' => $row['id_pedido'],

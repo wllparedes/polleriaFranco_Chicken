@@ -84,7 +84,7 @@ include("./../../../../php/verificar_session.php");
                       <div class="row">
 
                         <!-- Grupo: Método de Pago  -->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__metodo">
+                        <div class="form-group col-md-3 formulario__grupo" id="grupo__metodo">
                           <label for="metodo" class="formulario__label">Método de Pago</label>
                           <div class="formulario__grupo-input input-group">
                             <div class="input-group-prepend">

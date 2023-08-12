@@ -45,7 +45,7 @@
       </li>
 
       <!-- Mantenimiento -->
-      <li class="menu-header">MENTENIMIENTOS</li>
+      <li class="menu-header">MANTENIMIENTOS</li>
       <li class="dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Clientes</span></a>
         <ul class="dropdown-menu">

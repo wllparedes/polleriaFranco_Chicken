@@ -104,7 +104,7 @@ create table ordenDeCompra(
 
 create table comprobanteDeCompra(
     id_comprobanteDeCompra INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    descripcion VARCHAR(100),
+    observacion VARCHAR(100),
     archivo VARCHAR(100) NOT NULL, -- URL DEL PDF
     fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     id_ordenDeCompra INT NOT NULL,
