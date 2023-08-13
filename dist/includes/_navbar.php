@@ -19,7 +19,7 @@
       </a> <!-- ? ASIGNAR NOMBRE DE USER -->
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">Inició sesión hace 5 minutos</div>
-        <a href="features-profile.html" class="dropdown-item has-icon">
+        <a href="../../../usuario/perfil/views/actualizar-perfil.php" class="dropdown-item has-icon">
           <i class="far fa-user"></i> Perfil
         </a>
         <div class="dropdown-divider"></div>

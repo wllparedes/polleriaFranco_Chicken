@@ -69,7 +69,6 @@ $(document).ready(() => {
                 type: 'POST',
                 data: postData,
                 success: function (response) {
-                    console.log(response);
                     let respuesta = response.trim();
                     if (respuesta === "error") {
                         no_registrado('usuario');

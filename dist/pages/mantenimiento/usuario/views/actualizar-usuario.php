@@ -44,7 +44,7 @@
                   <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                 </div>
                 <div class="formulario__input-error">
-                  El nombre tiene que ser de 5 a 20 dígitos y solo puede contener numeros, letras y
+                  El nombre tiene que ser de 4 a 20 dígitos y solo puede contener numeros, letras y
                   guion bajo.
                 </div>
               </div>
@@ -63,7 +63,7 @@
                   <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                 </div>
                 <div class="formulario__input-error">
-                  El apellido tiene que ser de 5 a 20 dígitos y solo puede contener numeros, letras y guion
+                  El apellido tiene que ser de 4 a 20 dígitos y solo puede contener numeros, letras y guion
                   bajo.
                 </div>
               </div>
