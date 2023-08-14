@@ -20,7 +20,7 @@
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="../../../venta/pedido/views/nuevo-pedido.php">Nuevo pedido</a></li>
           <li><a class="nav-link" href="../../../venta/pedido/views/lista-pedidos.php">Lista de pedidos</a></li>
-          <li><a class="nav-link" href="layout-top-navigation.html">Generar Ticket pedido</a></li>
+          <li><a class="nav-link" href="../../../venta/tickets/views/nuevo-ticket.php">Generar Ticket pedido</a></li>
         </ul>
       </li>
 

@@ -151,11 +151,6 @@ create table detalle_pedido(
     FOREIGN KEY (id_consumible) REFERENCES consumible(id_consumible)
 );
 
-create table ticketPedido(
-    id_ticket INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    id_pedido INT NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
-);
 
 -- FACTURACIÓN 
 
@@ -177,7 +172,7 @@ create table comprobanteDeVenta(
 
 -- INSERT EMPRESA
 INSERT INTO `empresa` (`id_empresa`, `razon_social`, `ruc`, `direccion`, `ciudad`, `email`, `telefono`, `telefono_fijo`) VALUES 
-	(NULL, 'Franco Chicken', '09072834561', 'Urb. el exito Mz. C Lt. 19 – San Gregorio', 'Lima', 'Sin correo.', '+51 946 484 077', '(51) 356 2041');
+	(NULL, 'Franco Chicken', '09072834561', 'Urb. el exito Mz. C Lt. 19-San Gregorio', 'Lima/Vitarte', 'Sin Correo.', '+51 946 484 077', '(51) 356 2041');
 
 -- INSERT CARGO
 INSERT INTO `cargo` (`id_cargo`, `nom_cargo`, `descripcion`) 
@@ -257,11 +252,6 @@ FROM detalle_requerimiento dr
 JOIN producto p ON dr.id_producto = p.id_producto
 GROUP BY dr.id_req;
 
-
-select * from pedido;
-select * from detalle_pedido;
-delete from detalle_pedido where id_pedido = 5;
-
 CREATE VIEW VER_PEDIDO AS
 SELECT p.*, dp.id_consumible, dp.cantidad, c.nom_consumible, c.descripcion, c.precio, cate.nombre as nom_categoria
 FROM pedido p, detalle_pedido dp, consumible c, categoria cate
@@ -301,13 +291,3 @@ AND dr.id_producto = p.id_producto
 AND p.id_categoria = cate.id_categoria
 AND odc.id_empresa = em.id_empresa
 AND odc.id_proveedor = prov.id_proveedor;
-
-SELECT * FROM VER_ORDEN WHERE id_odc = 1;
-
-SELECT * FROM empresa;
-
-SELECT * FROM VER_REQUERIMIENTO WHERE id_req = 2;
-SELECT * FROM VER_COMPROBANTE WHERE id_cdv = 25;
-select * from cliente where razon_social = 'Juan';
-SELECT * FROM comprobanteDeVenta;
-SELECT * FROM VER_PEDIDO WHERE id_pedido = 8;

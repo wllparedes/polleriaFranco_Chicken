@@ -2892,14 +2892,6 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 } */
 
 
-/*  */
-
-#my-scrollbar {
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-}
-
 /* Table */
 
 .table__seleccionados{
@@ -2916,3 +2908,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .table__seleccionados_dos-activo{
   display: block;
 }
+
+
+/*  */
+
+
+
