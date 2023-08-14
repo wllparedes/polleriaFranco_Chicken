@@ -12,6 +12,7 @@
 
 - HTML
 - JavaScript
+- AJAX
 - CSS
 - SCSS
 - Google Fonts
@@ -19,7 +20,6 @@
 <h1>Back-End:</h1>
 
 - PHP
-- XAMP
 
 <h1>DataBase:</h1>
 
@@ -38,12 +38,17 @@
 - cleave Js
 - Fontawesome
 - Smmoth Scrollbar
+- FPDF
 
 <h1>Otras Herramientas:</h1>
 
 - IBM Rational Software Architec
 - DIA
-
+- XAMP
+- Visual Studio Code
+- GitHub
+- GIT
+  
 <h1>Navegadores Soportados:</h1>
 
 Polleria Franco Chicken puede ser soportado por los siguientes navegadores.
