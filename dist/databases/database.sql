@@ -1,6 +1,3 @@
--- Active: 1672707053078@@127.0.0.1@3306@polleriafrancochiken
---  BASE DE DATOS: "FRANCO CHICKEN"
--- Nota: Cuando veas el _detalle_ es parte de la normalización
 
 create database PolleriaFrancoChicken;
 use PolleriaFrancoChicken;
@@ -171,7 +168,7 @@ create table comprobanteDeVenta(
 );
 
 -- INSERT EMPRESA
-INSERT INTO `empresa` (`id_empresa`, `razon_social`, `ruc`, `direccion`, `ciudad`, `email`, `telefono`, `telefono_fijo`) VALUES 
+INSERT INTO `Empresa` (`id_empresa`, `razon_social`, `ruc`, `direccion`, `ciudad`, `email`, `telefono`, `telefono_fijo`) VALUES 
 	(NULL, 'Franco Chicken', '09072834561', 'Urb. el exito Mz. C Lt. 19-San Gregorio', 'Lima/Vitarte', 'Sin Correo.', '+51 946 484 077', '(51) 356 2041');
 
 -- INSERT CARGO
@@ -263,7 +260,7 @@ CREATE VIEW VER_COMPROBANTE AS
 SELECT cdv.id_comprobanteDeVenta as id_cdv, cdv.metodo_pago, cdv.fecha_hora as fecha_hora_cdv, cdv.estado as estado_cdv, 
 cdv.total, cdv.igv, cdv.id_usuario, cdv.id_cliente, p.*,
 dp.id_consumible, dp.cantidad, c.nom_consumible, c.descripcion, c.precio, cate.nombre as nom_categoria
-FROM comprobantedeventa cdv, pedido p, detalle_pedido dp, consumible c, categoria cate
+FROM comprobanteDeVenta cdv, pedido p, detalle_pedido dp, consumible c, categoria cate
 WHERE cdv.id_pedido = p.id_pedido   
 AND p.id_pedido = dp.id_pedido
 AND dp.id_consumible = c.id_consumible 
@@ -284,7 +281,7 @@ dr.id_producto, dr.cantidad,
 p.nom_producto, p.descripcion, p.precio, 
 cate.nombre as nom_categoria, em.*,
 prov.id_proveedor, prov.razon_social as razon_social_prov, prov.direccion as direccion_prov, prov.ruc as ruc_prov, prov.numero as numero_prov, prov.correo as correo_prov
-FROM ordendecompra odc,  requerimiento r, detalle_requerimiento dr, producto p, categoria cate, Empresa em, proveedor prov
+FROM ordenDeCompra odc,  requerimiento r, detalle_requerimiento dr, producto p, categoria cate, Empresa em, proveedor prov
 WHERE odc.id_req = r.id_req
 AND r.id_req = dr.id_req
 AND dr.id_producto = p.id_producto

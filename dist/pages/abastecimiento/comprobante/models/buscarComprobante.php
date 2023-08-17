@@ -4,7 +4,7 @@ include("./../../../../databases/db.php");
 
 $search = $_POST['search'];
 
-$query = "SELECT * FROM comprobantedecompra WHERE id_comprobanteDeCompra LIKE ? OR id_ordenDeCompra LIKE ? OR archivo LIKE ?";
+$query = "SELECT * FROM comprobanteDeCompra WHERE id_comprobanteDeCompra LIKE ? OR id_ordenDeCompra LIKE ? OR archivo LIKE ?";
 $search1 = $search . "%";
 $search2 = $search . "%";
 $search3 = "%" . $search . "%";

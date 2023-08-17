@@ -12,7 +12,7 @@ if (empty($id)) {
         $estado_nuevo = 0;
         $directorio = '../pdfs/';
 
-        $queryo = "SELECT id_ordenDeCompra, archivo FROM comprobantedecompra  WHERE id_comprobanteDeCompra = ? ";
+        $queryo = "SELECT id_ordenDeCompra, archivo FROM comprobanteDeCompra  WHERE id_comprobanteDeCompra = ? ";
         $stmto = $conn->prepare($queryo);
         $stmto->bind_param('i', $id);
         $stmto->execute();
@@ -23,12 +23,12 @@ if (empty($id)) {
 
         $rutaPDF = $directorio . $archivo;
 
-        $query = "DELETE FROM comprobantedecompra WHERE id_comprobanteDeCompra = ?";
+        $query = "DELETE FROM comprobanteDeCompra WHERE id_comprobanteDeCompra = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        $queryx = "UPDATE ordendecompra SET estado = ? WHERE id_ordenDeCompra = ?";
+        $queryx = "UPDATE ordenDeCompra SET estado = ? WHERE id_ordenDeCompra = ?";
         $stmtx = $conn->prepare($queryx);
         $stmtx->bind_param('ii', $estado_nuevo, $id_orden);
         $stmtx->execute();

@@ -126,7 +126,7 @@ include("./../../../../php/ventas_compras.php");
             <div class="card-header">
               <h4>Total</h4>
             </div>
-            <?php echo calcular_registros('ordendecompra') ?>
+            <?php echo calcular_registros('ordenDeCompra') ?>
           </div>
         </div>
       </div>

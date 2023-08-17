@@ -8,7 +8,7 @@ if (empty($_POST['id'])) {
     $id_orden = $_POST['id'];
     $directorio = '../pdfs/';
 
-    $query = "SELECT archivo FROM comprobantedecompra WHERE id_comprobanteDeCompra = ?";
+    $query = "SELECT archivo FROM comprobanteDeCompra WHERE id_comprobanteDeCompra = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id_orden);
     $stmt->execute();

@@ -2,7 +2,7 @@
 
 include("./../../../../databases/db.php");
 
-$query = "SELECT * FROM ordendecompra";
+$query = "SELECT * FROM ordenDeCompra";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();

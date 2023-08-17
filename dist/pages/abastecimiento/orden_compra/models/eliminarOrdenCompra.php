@@ -9,7 +9,7 @@ if (empty($id)) {
     echo 'advertencia';
 } else {
 
-    $query = "SELECT estado, id_req FROM ordendecompra WHERE id_ordenDeCompra = ? ";
+    $query = "SELECT estado, id_req FROM ordenDeCompra WHERE id_ordenDeCompra = ? ";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -26,7 +26,7 @@ if (empty($id)) {
         try {
             $estado_nuevo = 0;
 
-            $query = "DELETE FROM ordendecompra WHERE id_ordenDeCompra = ?";
+            $query = "DELETE FROM ordenDeCompra WHERE id_ordenDeCompra = ?";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("i", $id);
             $stmt->execute();

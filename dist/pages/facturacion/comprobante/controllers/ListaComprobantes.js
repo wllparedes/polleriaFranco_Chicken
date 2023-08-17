@@ -124,13 +124,13 @@ $(document).ready(() => {
                                 </tr>`;
                         });
                     } else {
-                        template = `<tr> <td colspan="11" class="text-center"> Sin resultados de la búsqueda </td> </tr>`
+                        template = `<tr> <td colspan="11" class="text-center"> Sin resultados de la búsqueda </td> </tr>`;
                         $('#comprobantes-result').html(template);
                     }
                     $('#comprobantes-result').html(template);
                     $('#comprobantes-result').show();
                 },
-            })
+            });
         } else {
             $('#comprobantes-result').hide();
         }
@@ -178,8 +178,8 @@ $(document).ready(() => {
             success: function (response) {
                 let detalle_comprobante = JSON.parse(response);
                 window.location.href = 'detalle-comprobante.php?comprobante_id=' + id + '&detalle=' + encodeURIComponent(JSON.stringify(detalle_comprobante));
-            }
-        })
+            },
+        });
         // 
     });
 });

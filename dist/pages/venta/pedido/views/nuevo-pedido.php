@@ -275,7 +275,7 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
   <script type="module" src="../controllers/NuevoPedido.js"></script>
   <script src="../tasks/CargarConsumibles.js"></script>
   <script src="../tasks/CargarMesas.js"></script>
-  <script src="../controllers/cargarConsumibles.js"></script>
+  <script src="../controllers/CargarConsumibles.js"></script>
   <!-- Modal para seleccionar consumibles -->
   <?php include("seleccionar-consumibles.php") ?>
 </body>

@@ -1,7 +1,7 @@
 // ? Nuevo Pedido
 
-import { expresiones } from './../../../../assets/js/scripts/expresionesRegulares.js';
-import {validarCampo, campos} from './../../../../assets/js/scripts/validarCampos.js';
+import { expresiones } from '../../../../assets/js/scripts/expresionesRegulares.js';
+import {validarCampo, campos} from '../../../../assets/js/scripts/validarCampos.js';
 
 $(document).ready(() => {
 

@@ -8,7 +8,7 @@ if (empty($_POST['id_cdv'])) {
     $id_cdv = $_POST['id_cdv'];
     $nuevo_estado = 1;
 
-    $query = "UPDATE comprobantedeventa SET estado = ? WHERE id_comprobanteDeVenta = ?";
+    $query = "UPDATE comprobanteDeVenta SET estado = ? WHERE id_comprobanteDeVenta = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ii', $nuevo_estado, $id_cdv);
     $stmt->execute();

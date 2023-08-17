@@ -15,13 +15,13 @@ if ( empty($_POST['id_orden']) || empty($_FILES['pdf']) ) {
     $pdfFilePath = $uploadDirectory . $pdfFileName;
 
     // * INSERT
-    $query = "INSERT INTO comprobantedecompra (observacion, archivo, id_ordenDeCompra) VALUES (?, ?, ?)";
+    $query = "INSERT INTO comprobanteDeCompra (observacion, archivo, id_ordenDeCompra) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ssi', $observacion, $pdfFileName, $id_orden);
     $stmt->execute();
 
     // * UPDATE
-    $query2 = "UPDATE ordendecompra SET estado = ?  WHERE id_ordenDeCompra = ?";
+    $query2 = "UPDATE ordenDeCompra SET estado = ?  WHERE id_ordenDeCompra = ?";
     $stmt2 = $conn->prepare($query2);
     $stmt2->bind_param('ii', $estado_nuevo, $id_orden);
     $stmt2->execute();

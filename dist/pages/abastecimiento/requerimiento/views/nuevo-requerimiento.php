@@ -92,12 +92,12 @@ include("./../../../../php/verificar_session.php");
                                 <i class="fas fa-user"></i>
                               </div>
                             </div>
-                            <input type="text" class="form-control formulario__grupo-input" id="registrador" name="registrador"
-                              placeholder="John Adam Boe Kean">
+                            <input type="text" class="form-control formulario__grupo-input" id="registrador"
+                              name="registrador" placeholder="John Adam Boe Kean">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
-                            El nombre del cliente tiene que ser de 4 a 20 dígitos y solo
+                            El nombre del registrador tiene que ser de 4 a 20 dígitos y solo
                             puede
                             contener letras y
                             guion bajo.

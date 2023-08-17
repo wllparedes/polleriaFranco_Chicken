@@ -5,7 +5,7 @@ include("./../../../../databases/db.php");
 // $valor = array
 $valor = $_POST['valor'];
 
-$query = "SELECT * FROM ordendecompra WHERE id_ordenDeCompra = ?";
+$query = "SELECT * FROM ordenDeCompra WHERE id_ordenDeCompra = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $valor);
 $stmt->execute();

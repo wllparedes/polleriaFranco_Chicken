@@ -4,7 +4,7 @@
   // Destruir session cuando se haga click en cerrar session
   session_destroy();
   // Rederigir al index (login)
-  header('Location: ../../login.php');
+  header('Location: ../../index.php');
   
 
 ?>

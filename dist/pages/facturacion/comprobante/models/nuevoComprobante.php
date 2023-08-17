@@ -30,7 +30,7 @@ if (empty($_POST['id_pedido']) || empty($_POST['metodo_pago'])) {
 
     if (empty($id_cliente)) {
 
-        $query2 = "INSERT INTO comprobantedeventa (metodo_pago, estado, total, igv, id_pedido, id_usuario)
+        $query2 = "INSERT INTO comprobanteDeVenta (metodo_pago, estado, total, igv, id_pedido, id_usuario)
         VALUES (?, ?, ?, ?, ?, ?)";
         $stmt->prepare($query2);
         $stmt->bind_param('siddii', $metodo_pago, $estado, $monto_final, $igv, $id_pedido, $id_usuario);
@@ -39,7 +39,7 @@ if (empty($_POST['id_pedido']) || empty($_POST['metodo_pago'])) {
     } else{
 
         // ? Insert Comprobante de Venta
-        $query2 = "INSERT INTO comprobantedeventa (metodo_pago, estado, total, igv, id_pedido, id_usuario, id_cliente)
+        $query2 = "INSERT INTO comprobanteDeVenta (metodo_pago, estado, total, igv, id_pedido, id_usuario, id_cliente)
         VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt->prepare($query2);
         $stmt->bind_param('siddiii', $metodo_pago, $estado, $monto_final, $igv, $id_pedido, $id_usuario, $id_cliente);

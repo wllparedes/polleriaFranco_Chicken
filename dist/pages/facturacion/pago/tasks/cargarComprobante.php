@@ -2,7 +2,7 @@
 
 include("./../../../../databases/db.php");
 
-$query = "SELECT id_comprobanteDeVenta, id_pedido, total, fecha_hora FROM comprobantedeventa WHERE estado = 0";
+$query = "SELECT id_comprobanteDeVenta, id_pedido, total, fecha_hora FROM comprobanteDeVenta WHERE estado = 0";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();

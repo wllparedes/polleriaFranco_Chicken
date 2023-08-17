@@ -25,12 +25,12 @@ while ($row = $result->fetch_assoc()) {
         $partes_cdv = explode(" ", $row['fecha_hora_cdv']);
         $fecha_cdv = $partes_cdv[0];
         $hora_cdv = $partes_cdv[1];
-        $estado_cdv = $row['estado_cdv'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>";
+        $estado_cdv = $row['estado_cdv'] == 0 ? "No activo" : "Activo";
 
         $partes = explode(" ", $row['fecha_hora']);
         $fecha = $partes[0];
         $hora = $partes[1];
-        $estado = $row['estado'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>";
+        $estado = $row['estado'] == 0 ? "No activo" : "Activo";
 
         // ? Comprobante de Venta : Datos
 
@@ -62,7 +62,6 @@ while ($row = $result->fetch_assoc()) {
 
         );
 
-
         if ( !empty($id_cliente) ) {
             $queryx = "SELECT * FROM cliente WHERE id_cliente = ?";
             $stmtx = $conn->prepare($queryx);
@@ -78,8 +77,8 @@ while ($row = $result->fetch_assoc()) {
                 'correo' => $rowx['correo'],
                 'ruc' => $rowx['ruc'],
                 'numero' => $rowx['numero']
-
             );
+            $stmtx->close();
 
         }
 
@@ -97,7 +96,10 @@ while ($row = $result->fetch_assoc()) {
     );
 }
 
+
+$stmt->close();
+$conn->close();
+
 $jsonstring = json_encode($json);
 echo $jsonstring;
-
 ?>

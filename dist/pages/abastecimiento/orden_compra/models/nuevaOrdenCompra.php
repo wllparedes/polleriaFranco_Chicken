@@ -30,7 +30,7 @@ if (empty($_POST['id_proveedor']) || empty($_POST['id_req'])) {
     $monto_final = (float) $sub_total + $igv;
 
     // ? Insert orden de compra
-    $query2 = "INSERT INTO ordendecompra (estado, igv, total, id_proveedor, id_req, id_empresa, fecha_hora_entrega)
+    $query2 = "INSERT INTO ordenDeCompra (estado, igv, total, id_proveedor, id_req, id_empresa, fecha_hora_entrega)
     VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt->prepare($query2);
     $stmt->bind_param('iddiiis', $estado, $igv, $monto_final, $id_proveedor, $id_req, $id_empresa, $fecha_hora_entrega);

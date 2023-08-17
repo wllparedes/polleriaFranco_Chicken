@@ -2,7 +2,7 @@
 
 include("./../../../../databases/db.php");
 
-$query = "SELECT id_ordenDeCompra, igv, total, id_proveedor, fecha_hora FROM ordendecompra WHERE estado = 0";
+$query = "SELECT id_ordenDeCompra, igv, total, id_proveedor, fecha_hora FROM ordenDeCompra WHERE estado = 0";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();
