@@ -1,14 +1,9 @@
-<table>
-    <tr>
-        <td>
-            <a href="#" target="_blank"><img src="dist/assets/img/login/bg-login.png"></a>
-            <h3>Polleria Franco - Chicken 2023</h3>
-        </td>
-    </tr>
-</table>
 
+# Polleria Franco Chicken
 
-<h1>Front-End:</h1>
+![Polleria franco chicken](dist/assets/img/login/bg-login.png)
+
+# Front-End
 
 - HTML
 - JavaScript
@@ -17,18 +12,17 @@
 - SCSS
 - Google Fonts
 
-<h1>Back-End:</h1>
+# Back-End
 
 - PHP
 
-<h1>DataBase:</h1>
+# DataBase
 
 - SQL
 - PhpMyAdmin
 - MysqlWorkbench
 
-
-<h1>Librerias usadas:</h1>
+# Librerias usadas
 
 - Bootstrap 5
 - jQuery
@@ -40,7 +34,7 @@
 - Smmoth Scrollbar
 - FPDF
 
-<h1>Otras Herramientas:</h1>
+# Otras Herramientas
 
 - IBM Rational Software Architec
 - DIA
@@ -48,12 +42,12 @@
 - Visual Studio Code
 - GitHub
 - GIT
-  
-<h1>Navegadores Soportados:</h1>
+
+# Navegadores Soportados
 
 Polleria Franco Chicken puede ser soportado por los siguientes navegadores.
 
-- Chrome
-- FireFox 
-- Opera 
-- Edge 
+- Chrome.
+- FireFox.
+- Opera.
+- Edge.

@@ -1,11 +1,10 @@
-
+-- Active: 1672707053078@@127.0.0.1@3306@polleriafrancochicken
 create database PolleriaFrancoChicken;
 use PolleriaFrancoChicken;
 
 -- Info de la empresa "Polleria Franco Chicken"
-
 create table Empresa(
-	id_empresa INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	razon_social VARCHAR(20),
 	ruc VARCHAR(11),
 	direccion VARCHAR(80),
