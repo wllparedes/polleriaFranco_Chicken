@@ -316,6 +316,7 @@ AND r.id_usuario = u.id_usuario;
 
 --  Trigger para actualizar el balance de ventas
 
+DELIMITER //
 CREATE TRIGGER update_balance_ventas
 AFTER INSERT ON comprobanteDeVenta
 FOR EACH ROW
@@ -333,10 +334,12 @@ BEGIN
     SET igvNew = NEW.igv;
 
     INSERT INTO balance_ventas (monto_ventas, ingreso, igv_ingreso) VALUES (monto_ventasNew, ingresoNew, igvNew);
-END;
+END //
+DELIMITER ;
+
 
 --  Trigger para actualizar el balance de compras
-
+DELIMITER //
 CREATE TRIGGER update_balance_compras
 AFTER INSERT ON ordenDeCompra
 FOR EACH ROW
@@ -354,7 +357,8 @@ BEGIN
     SET igvNew = NEW.igv;
 
     INSERT INTO balance_compras (monto_compras, gasto, igv_gasto) VALUES (monto_comprasNew, gastoNew, igvNew);
-END;
+END //
+DELIMITER ;
 
 
 
