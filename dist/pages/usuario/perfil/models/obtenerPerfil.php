@@ -14,7 +14,6 @@ $result = $stmt->get_result();
 
 $json = array(
     'usuario' => array(),
-    'cargo' => array(),
 );
 
 while ($row = $result->fetch_assoc()) {
@@ -38,21 +37,7 @@ while ($row = $result->fetch_assoc()) {
         'dni' => $row['dni'],
         'nombre_usuario' => $row['nombre_usuario'],
         'email' => $row['email'],
-        'id_cargo' => $row['id_cargo'],
         'clave' => $password_decrypted,
-    );
-}
-
-// Obtener los cargos
-$queryc = "SELECT * FROM cargo";
-$stmtc = $conn->prepare($queryc);
-$stmtc->execute();
-$resultc = $stmtc->get_result();
-
-while ($rowc = $resultc->fetch_assoc()) {
-    $json['cargo'][] = array(
-        'value' => $rowc['id_cargo'],
-        'label' => $rowc['nom_cargo'],
     );
 }
 
@@ -60,7 +45,6 @@ while ($rowc = $resultc->fetch_assoc()) {
 echo json_encode($json);
 
 $stmt->close();
-$stmtc->close();
 $conn->close();
 
 ?>

@@ -49,8 +49,8 @@ while ($row = $result->fetch_assoc()) {
         'estado' => $estado,
         'igv' => $row['igv'],
         'total' => $row['total'],
-        'proveedor' => $id_proveedor .'::  '. $proveedor,
-        'id_req' => $id_req.'::  '. $fecha_hora_req,
+        'proveedor' => $proveedor .': '. $id_proveedor,
+        'id_req' => $id_req,
     );
 }
 

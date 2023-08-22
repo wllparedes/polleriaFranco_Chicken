@@ -14,9 +14,6 @@ $(document).ready(() => {
 
     const validarFormulario = (e) => {
         switch (e.target.name) {
-            case 'registrador':
-                validarCampo(expresiones.registrador, 'registrador', e.target);
-                break;
             case 'observacion':
                 validarCampo(expresiones.observacion, 'observacion', e.target);
                 break;
@@ -34,7 +31,7 @@ $(document).ready(() => {
         let select_productos = $('#select-productos');
         let observacion = $('#observacion');
 
-        if ( campos.registrador && ( select_productos.val().length != 0 )  &&   ( _.isEmpty(observacion.val().trim()) || campos.observacion )  ) {
+        if ( ( select_productos.val().length != 0 )  &&   ( _.isEmpty(observacion.val().trim()) || campos.observacion )  ) {
             
             let cantidad_producto = [];
             let cantidades = document.getElementsByClassName('input-unidad');
@@ -48,7 +45,6 @@ $(document).ready(() => {
             }
     
             const postData = {
-                registrador: $('#registrador').val(),
                 observacion: observacion.val(),
                 productos: cantidad_producto
             };

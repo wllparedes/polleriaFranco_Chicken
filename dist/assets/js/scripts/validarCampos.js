@@ -19,9 +19,6 @@ export const campos = {
     // * Producto
     producto: false,
 
-    // * Requerimiento
-    registrador: false,
-
     // * User
     nombres: false,
     apellidos: false,

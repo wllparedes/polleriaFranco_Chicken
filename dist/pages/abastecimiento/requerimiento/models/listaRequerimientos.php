@@ -16,11 +16,21 @@ while ($row = $result->fetch_assoc()) {
     $fecha = $partes[0];
     $hora = $partes[1];
     $estado = $row['estado'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>";
+
+    // nombre del registrador
+
+    $queryR = "SELECT nombre_usuario FROM usuario WHERE id_usuario = ?";
+    $stmtR = $conn->prepare($queryR);
+    $stmtR->bind_param("i", $row['id_usuario']);
+    $stmtR->execute();
+    $resultR = $stmtR->get_result();
+    $rowR = $resultR->fetch_assoc();
+    $registrador = $rowR['nombre_usuario'];
     
 
     $json[] = array(
         'id_requerimiento' => $row['id_req'],
-        'registrador' => $row['registrador'],
+        'registrador' => $registrador,
         'fecha' => $fecha,
         'hora' => $hora,
         'estado' => $estado,

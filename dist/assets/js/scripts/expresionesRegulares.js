@@ -21,9 +21,6 @@ export const expresiones = {
 	// * Producto
 	producto: /^[a-zA-Z0-9\_\-\. ][^@]{4,35}$/,
 
-	// * Requerimiento
-	registrador: /^[a-zA-Z\_\- ]{4,90}$/,
-
 	// * Usuario
 	nombres: /^[a-zA-Z\_\- ]{4,40}$/,
 	apellidos: /^[a-zA-Z\_\- ]{4,40}$/,

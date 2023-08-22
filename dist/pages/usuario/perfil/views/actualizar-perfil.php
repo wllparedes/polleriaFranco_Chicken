@@ -62,7 +62,9 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Hola, <?php echo $_SESSION['nombre_usuario'] ?> !</h2>
+            <h2 class="section-title">Hola,
+              <b id="saludo"> <?php echo $_SESSION['nombre_usuario'] ?></b> !
+            </h2>
             <p class="section-lead">
               Cambiar información sobre usted en esta página.
             </p>
@@ -76,6 +78,18 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                     </div>
                     <div class="card-body">
 
+                      <div class="row d-flex justify-content-center">
+                        <div class="form-group col-md-6 formulario__grupo">
+                          <div class="p-3 bg-warning shadow-warning">
+                            <div class="mensaje__advertencia">
+                              <b class="font-weight-600 d-flex justify-content-center align-items-center"><span
+                                  class="fas fa-exclamation-triangle"></span>&nbsp; Una vez asignado un cargo a un
+                                usuario no se puede cambiar dicho cargo.</b>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       <div class="row">
 
                         <!-- Grupo: Nombres -->
@@ -87,8 +101,8 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                                 <i class="fas fa-user"></i>
                               </div>
                             </div>
-                            <input disabled type="text" class="form-control formulario__grupo-input" id="nombres" name="nombres"
-                              placeholder="John Alexander">
+                            <input disabled type="text" class="form-control formulario__grupo-input" id="nombres"
+                              name="nombres" placeholder="John Alexander">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
@@ -128,8 +142,8 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                                 <i class="fas fa-phone"></i>
                               </div>
                             </div>
-                            <input disabled type="text" class="form-control formulario__grupo-input phone-number" id="numero"
-                              name="numero" placeholder="+51 982 029 923">
+                            <input disabled type="text" class="form-control formulario__grupo-input phone-number"
+                              id="numero" name="numero" placeholder="+51 982 029 923">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
@@ -188,8 +202,8 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                                 <i class="fas fa-at"></i>
                               </div>
                             </div>
-                            <input disabled type="email" class="form-control formulario__grupo-input" id="correo" name="correo"
-                              placeholder="johnboe@gmail.com">
+                            <input disabled type="email" class="form-control formulario__grupo-input" id="correo"
+                              name="correo" placeholder="johnboe@gmail.com">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
@@ -219,26 +233,9 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
                             mayúscula, números y algún caracter especial.
                           </div>
                         </div>
-
-                        <!-- Grupo: Cargo -->
-                        <div class="form-group col-md-3" id="grupo__cargo">
-                          <label for="cargo" class="formulario__label">Cargo</label>
-                          <div class="formulario__grupo-input input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">
-                                <i class="fas fa-certificate"></i>
-                              </div>
-                            </div>
-
-                            <div id="select-cargos" class="form-control">
-                              <!-- Lista de cargos a elegir -->
-                            </div>
-
-                          </div>
-                        </div>
-
-
                       </div>
+
+
 
                       <!-- = Message Error -->
 
@@ -264,7 +261,8 @@ $ruta_sidebar = $_SESSION['nom_cargo'] == 'Recepcionista' ? "./../../../../inclu
 
                     </div>
                     <div class="card-footer text-right" id="contenedor_btn">
-                      <button id="btn_bipolar" type="button" name="editar" class="editar btn btn-lg btn-primary bg-primary">
+                      <button id="btn_bipolar" type="button" name="editar"
+                        class="editar btn btn-lg btn-primary bg-primary">
                         <i class="fas fa-pen"></i>
                         &nbsp;<b>Editar Información</b>
                       </button>

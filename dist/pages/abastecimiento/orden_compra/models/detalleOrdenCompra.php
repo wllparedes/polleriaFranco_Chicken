@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
         $json['requerimiento'][] = array(
 
             'id_req' => $row['id_req'],
-            'registrador' => $row['registrador'],
+            'registrador' => $row['nombre_usuario'],
             'fecha' => $fecha,
             'hora' => $hora,
             'estado' => $estado,

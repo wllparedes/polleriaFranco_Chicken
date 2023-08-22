@@ -57,7 +57,7 @@ create table usuario( -- empleado
 
 create table requerimiento(
     id_req INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-	registrador VARCHAR(90) NOT NULL,   
+	-- registrador VARCHAR(90) NOT NULL,   
     fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     estado BOOLEAN NOT NULL,
 	observacion VARCHAR(50) NOT NULL,   
@@ -166,6 +166,25 @@ create table comprobanteDeVenta(
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 );
 
+-- Tablas para los registros de gastos y ventas
+
+CREATE TABLE balance_ventas(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    monto_ventas DECIMAL(8,2),
+    ingreso DECIMAL(8,2),
+    igv_ingreso DECIMAL(8,2),
+    fecha_hora_ultimaVenta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE balance_compras(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    monto_compras DECIMAL(8,2),
+    gasto DECIMAL(8,2),
+    igv_gasto DECIMAL(8,2),
+    fecha_hora_ultimaCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 -- INSERT EMPRESA
 INSERT INTO `Empresa` (`id_empresa`, `razon_social`, `ruc`, `direccion`, `ciudad`, `email`, `telefono`, `telefono_fijo`) VALUES 
 	(NULL, 'Franco Chicken', '09072834561', 'Urb. el exito Mz. C Lt. 19-San Gregorio', 'Lima/Vitarte', 'Sin Correo.', '+51 946 484 077', '(51) 356 2041');
@@ -233,6 +252,9 @@ INSERT INTO `consumible` (`id_consumible`, `nom_consumible`, `descripcion`, `pre
         (NULL, 'Moscou Mule', 'Sin descripción.', '15.00', '2'), 
         (NULL, 'Whisky Sour', 'Sin descripción.', '15.00', '2');
 
+INSERT INTO balance_ventas (monto_ventas, ingreso, igv_ingreso) VALUES(0, 0, 0);
+INSERT INTO balance_compras (monto_compras, gasto, igv_gasto) VALUES(0, 0, 0);
+
 
 -- VISTA PARA CALCULAR EL SUBTOTAL de Pedido
 CREATE VIEW CALCULAR_SUBTOTAL AS
@@ -266,24 +288,77 @@ AND dp.id_consumible = c.id_consumible
 AND c.id_categoria = cate.id_categoria;
 
 CREATE VIEW VER_REQUERIMIENTO AS
-SELECT r.*, dr.id_producto, dr.cantidad, p.nom_producto, p.descripcion, p.precio, cate.nombre as nom_categoria
-FROM requerimiento r, detalle_requerimiento dr, producto p, categoria cate
+SELECT r.*, dr.id_producto, dr.cantidad, p.nom_producto, p.descripcion, p.precio, cate.nombre as nom_categoria, u.nombre_usuario
+FROM requerimiento r, detalle_requerimiento dr, producto p, categoria cate, usuario u
 WHERE r.id_req = dr.id_req
 AND dr.id_producto = p.id_producto
-AND p.id_categoria = cate.id_categoria;
+AND p.id_categoria = cate.id_categoria
+AND r.id_usuario = u.id_usuario;
 
-CREATE VIEW VER_ORDEN AS
+CREATE OR REPLACE VIEW VER_ORDEN AS
 SELECT odc.id_ordenDeCompra as id_odc, odc.fecha_hora as fecha_hora_odc, odc.estado as estado_odc, 
 odc.total, odc.igv, odc.fecha_hora_entrega, 
 r.*, 
 dr.id_producto, dr.cantidad, 
 p.nom_producto, p.descripcion, p.precio, 
 cate.nombre as nom_categoria, em.*,
-prov.id_proveedor, prov.razon_social as razon_social_prov, prov.direccion as direccion_prov, prov.ruc as ruc_prov, prov.numero as numero_prov, prov.correo as correo_prov
-FROM ordenDeCompra odc,  requerimiento r, detalle_requerimiento dr, producto p, categoria cate, Empresa em, proveedor prov
+prov.id_proveedor, prov.razon_social as razon_social_prov, prov.direccion as direccion_prov, prov.ruc as ruc_prov, prov.numero as numero_prov, prov.correo as correo_prov,
+u.nombre_usuario
+FROM ordenDeCompra odc,  requerimiento r, detalle_requerimiento dr, producto p, categoria cate, Empresa em, proveedor prov, usuario u
 WHERE odc.id_req = r.id_req
 AND r.id_req = dr.id_req
 AND dr.id_producto = p.id_producto
 AND p.id_categoria = cate.id_categoria
 AND odc.id_empresa = em.id_empresa
-AND odc.id_proveedor = prov.id_proveedor;
+AND odc.id_proveedor = prov.id_proveedor
+AND r.id_usuario = u.id_usuario;
+
+
+--  Trigger para actualizar el balance de ventas
+
+CREATE TRIGGER update_balance_ventas
+AFTER INSERT ON comprobanteDeVenta
+FOR EACH ROW
+BEGIN
+
+    DECLARE monto_ventasLast FLOAT;
+    DECLARE monto_ventasNew FLOAT;
+    DECLARE ingresoNew FLOAT;
+    DECLARE igvNew FLOAT;
+
+    SELECT monto_ventas INTO monto_ventasLast FROM balance_ventas ORDER BY id DESC LIMIT 1; 
+
+    SET monto_ventasNew = monto_ventasLast + NEW.total;
+    SET ingresoNew = NEW.total;
+    SET igvNew = NEW.igv;
+
+    INSERT INTO balance_ventas (monto_ventas, ingreso, igv_ingreso) VALUES (monto_ventasNew, ingresoNew, igvNew);
+END;
+
+--  Trigger para actualizar el balance de compras
+
+CREATE TRIGGER update_balance_compras
+AFTER INSERT ON ordenDeCompra
+FOR EACH ROW
+BEGIN
+
+    DECLARE monto_comprasLast FLOAT;
+    DECLARE monto_comprasNew FLOAT;
+    DECLARE gastoNew FLOAT;
+    DECLARE igvNew FLOAT;
+
+    SELECT monto_compras INTO monto_comprasLast FROM balance_compras ORDER BY id DESC LIMIT 1; 
+
+    SET monto_comprasNew = monto_comprasLast + NEW.total;
+    SET gastoNew = NEW.total;
+    SET igvNew = NEW.igv;
+
+    INSERT INTO balance_compras (monto_compras, gasto, igv_gasto) VALUES (monto_comprasNew, gastoNew, igvNew);
+END;
+
+
+
+
+-- * Actualizar, eliminar y añadir productos
+
+

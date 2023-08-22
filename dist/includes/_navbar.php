@@ -7,13 +7,15 @@
   </form>
   <ul class="navbar-nav navbar-right">
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-        <div class="d-sm-none d-lg-inline-block"> 
+        <div class="d-sm-none d-lg-inline-block">
           <strong>
             <?= $_SESSION['nom_cargo'] ?>:
-          </strong> 
+          </strong>
         </div>
         <div class="d-sm-none d-lg-inline-block">
-          <?= $_SESSION['nombre_usuario'] ?>
+          <b id="nombre_usuario">
+            <?= $_SESSION['nombre_usuario'] ?>
+          </b>
         </div>
         <img alt="image" src="./../../../../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
       </a> <!-- ? ASIGNAR NOMBRE DE USER -->

@@ -19,10 +19,10 @@ while ($row = $result->fetch_assoc()) {
         $partes = explode(" ", $row['fecha_hora']);
         $fecha = $partes[0];
         $hora = $partes[1];
-        $estado = $row['estado'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>" ;
+        $estado = $row['estado'] == 0 ? "<div class='badge badge-danger'>No activo</div>" : "<div class='badge badge-success'>Activo</div>" ;        
 
         $json['id_req'] = $row['id_req'];
-        $json['registrador'] = $row['registrador'];
+        $json['registrador'] = $row['nombre_usuario'];
         $json['fecha'] = $fecha;
         $json['hora'] = $hora;
         $json['estado'] = $estado;

@@ -4,12 +4,11 @@ include("./../../../../databases/db.php");
 
 $search = $_POST['search'];
 
-$query = "SELECT * FROM ordenDeCompra WHERE id_ordenDeCompra LIKE ? OR id_proveedor LIKE ? OR id_req LIKE ?";
+$query = "SELECT * FROM ordenDeCompra WHERE id_ordenDeCompra LIKE ? OR id_proveedor LIKE ?";
 $search1 = $search . "%";
 $search2 = $search . "%";
-$search3 = $search . "%";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("sss", $search1, $search2, $search3);
+$stmt->bind_param("ss", $search1, $search2);
 $stmt->execute();
 
 $result = $stmt->get_result();

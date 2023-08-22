@@ -101,8 +101,7 @@ include("./../../../../php/verificar_session.php");
                       <div class="row">
                         <!-- Grupo: Btn Seleccionar proveedor -->
                         <div class="form-group col-md-6 formulario__grupo" id="grupo__proveedor">
-                          <label for="proveedor" class="formulario__label">Seleccionar proveedor requerido
-                            (Opcional)</label>
+                          <label for="proveedor" class="formulario__label">Seleccionar proveedor requerido</label>
                           <div class="formulario__grupo-input input-group">
 
                             <button type="button" class="btn btn-info" data-bs-toggle="modal"

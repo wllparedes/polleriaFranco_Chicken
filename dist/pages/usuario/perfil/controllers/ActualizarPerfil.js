@@ -65,7 +65,6 @@ $(document).ready(() => {
         // ? Cambiar los btns disabled = false
         let inputs = $('input');
         inputs.each( function() { $(this).prop('disabled', false) });
-        document.querySelector('#select-cargos').enable();
 
         // ? Crear un input para actualizar
 
@@ -80,9 +79,7 @@ $(document).ready(() => {
         
         $('.actualizar').click(function (e) {
 
-            let select_cargo = $('#select-cargos');
-
-            if (campos.nombres && campos.apellidos && campos.numero && campos.dni && campos.userName && campos.password && campos.correo && select_cargo.val()) { 
+            if (campos.nombres && campos.apellidos && campos.numero && campos.dni && campos.userName && campos.password && campos.correo) { 
 
                 // Ajax 
                 const postData = {
@@ -93,7 +90,6 @@ $(document).ready(() => {
                     userName: $('#userName').val(),
                     correo: $('#correo').val(),
                     password: $('#password').val(),
-                    id_cargo: select_cargo.val()
                 };
 
                 $.ajax({
@@ -109,7 +105,6 @@ $(document).ready(() => {
                             
                             // ? Cambiar los btns disabled = false
                             inputs.each( function() { $(this).prop('disabled', true) });
-                            document.querySelector('#select-cargos').disable();
                             // Eliminar los check
                             document.querySelectorAll('.formulario__grupo-correcto').forEach((i) => {
                                 i.classList.remove('formulario__grupo-correcto')
@@ -117,8 +112,12 @@ $(document).ready(() => {
                             // ? Eliminar el input actualizar
                             btn_actualizar.parentNode.removeChild(btn_actualizar);
                             btn_editar.removeAttribute('disabled');
-
                             contenedor_mensaje.classList.remove('contenedor__mensaje-activo');
+                            
+                            let nuevoNombre = $('#userName').val();
+                            $('#saludo').text(nuevoNombre);
+                            $('#nombre_usuario').text(nuevoNombre);
+
                         }
                         
                     }

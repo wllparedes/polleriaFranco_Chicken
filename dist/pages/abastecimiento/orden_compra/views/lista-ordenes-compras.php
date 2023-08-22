@@ -80,8 +80,8 @@ include("./../../../../php/verificar_session.php");
                       <table id="tabla" class="table table-hover">
                         <thead>
                           <tr>
-                            <th>ID Orden</th>
-                            <th>ID Requerimiento</th>
+                            <th>ID ORD</th>
+                            <th>ID REQ</th>
                             <th>Proveedor</th>
                             <th>Fecha</th>
                             <th>Hora</th>

@@ -8,7 +8,7 @@ function ventas_compras($registro)
     $registro = mysqli_real_escape_string($conn, $registro);
 
     if ($registro == 'ventas') {
-        $query = "SELECT SUM(total) as soles_ventas FROM comprobanteDeVenta";
+        $query = "SELECT monto_ventas as soles_ventas FROM balance_ventas ORDER BY id DESC LIMIT 1";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -18,7 +18,7 @@ function ventas_compras($registro)
 
     } else if($registro == 'compras') {
         
-        $query = "SELECT SUM(total) as soles_compras FROM ordenDeCompra;";
+        $query = "SELECT monto_compras as soles_compras FROM balance_compras ORDER BY id DESC LIMIT 1";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

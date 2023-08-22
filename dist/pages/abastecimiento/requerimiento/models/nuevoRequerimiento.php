@@ -10,16 +10,15 @@ if (empty($_POST['productos'])) {
     // GUARDAR EN VARIABLES LOS DATOS A INSERTAR
 
     $productos = $_POST['productos'];
-    $registrador = $_POST['registrador'];
     $observacion = empty($_POST['observacion']) ? 'Sin observaciones' : $_POST['observacion'];
     $estado = 0;
     $id_usuario = $_SESSION['id_usuario'];
 
     //  INSERT PARA LA TABLA PEDIDO
 
-    $query = "INSERT INTO requerimiento (registrador, estado, observacion, id_usuario) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO requerimiento (estado, observacion, id_usuario) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('sisi', $registrador, $estado, $observacion, $id_usuario);
+    $stmt->bind_param('isi', $estado, $observacion, $id_usuario);
     $stmt->execute();
     $id_req = $conn->insert_id;
 

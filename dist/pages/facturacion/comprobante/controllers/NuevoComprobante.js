@@ -26,6 +26,8 @@ $(document).ready(() => {
                 type: 'POST',
                 data: postData,
                 success: function (response) {
+                    console.log(response);
+                    console.log(postData)
                     let respuesta = response.trim();
                     if (respuesta != "correcto") {
                         error();

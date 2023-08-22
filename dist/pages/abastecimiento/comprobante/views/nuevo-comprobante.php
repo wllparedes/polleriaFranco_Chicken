@@ -154,7 +154,7 @@ include("./../../../../php/verificar_session.php");
                                 <table class="table table-striped">
                                   <thead>
                                     <tr>
-                                      <th>ID</th>
+                                      <th>ID ORD</th>
                                       <th>ID REQ</th>
                                       <th>Fecha registro</th>
                                       <th>Hora registro</th>

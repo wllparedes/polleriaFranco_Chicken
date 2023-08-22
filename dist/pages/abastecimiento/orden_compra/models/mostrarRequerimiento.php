@@ -23,7 +23,7 @@ while ($row = $result->fetch_assoc()) {
         $estado = $row['estado'] == 0 ? "No activo" : "Activo";
 
         $json['id_req'] = $row['id_req'];
-        $json['registrador'] = $row['registrador'];
+        $json['registrador'] = $row['nombre_usuario'];
         $json['fecha'] = $fecha;
         $json['hora'] = $hora;
         $json['estado'] = $estado;

@@ -24,8 +24,8 @@ while ($row = $result->fetch_assoc()) {
 
     $json[] = array(
         'value' => $id_odc,
-        'label' => $id_odc . ' - ' . $row['fecha_hora'],
-        'description' => $id_prov .' - ' . $razon_social . ' - S/.' . $row['total'],
+        'label' => "ID: " . $id_odc . ' - igv: S/.' . $row['igv'] . " - Monto Final: S/." . $row['total'],
+        'description' => 'Prov: ' . $razon_social . ' - Fecha y Hora: ' . $row['fecha_hora'],
     );
 }
 

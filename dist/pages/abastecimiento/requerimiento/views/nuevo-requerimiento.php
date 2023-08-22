@@ -82,52 +82,6 @@ include("./../../../../php/verificar_session.php");
                     <form class="forms-sample form-requerimiento" id="formulario">
 
                       <div class="row">
-
-                        <!-- Grupo: Nombres-->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__registrador">
-                          <label for="registrador" class="formulario__label">Nombres y Apellidos del Registrador</label>
-                          <div class="formulario__grupo-input input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">
-                                <i class="fas fa-user"></i>
-                              </div>
-                            </div>
-                            <input type="text" class="form-control formulario__grupo-input" id="registrador"
-                              name="registrador" placeholder="John Adam Boe Kean">
-                            <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
-                          </div>
-                          <div class="formulario__input-error">
-                            El nombre del registrador tiene que ser de 4 a 20 dígitos y solo
-                            puede
-                            contener letras y
-                            guion bajo.
-                          </div>
-                        </div>
-
-                        <!-- Grupo: Observación-->
-                        <div class="form-group col-md-6 formulario__grupo" id="grupo__observacion">
-                          <label for="observacion" class="formulario__label">Observación
-                            (Opcional)</label>
-                          <div class="formulario__grupo-input input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">
-                                <i class="fas fa-eye"></i>
-                              </div>
-                            </div>
-                            <input type="text" class="form-control formulario__grupo-input" id="observacion"
-                              name="observacion" placeholder="La cantidad de arroz separada en 3 sacos...">
-                            <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
-                          </div>
-                          <div class="formulario__input-error">
-                            La observación solo debe de contener letras, números, guiones y
-                            el /.
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="bg-secondary">
-
-                      <div class="row">
                         <!-- Grupo: Btn Seleccionar Productos -->
                         <div class="form-group col-md-6 formulario__grupo" id="grupo__nombre">
                           <label for="nombre" class="formulario__label">Seleccionar productos a pedir</label>
@@ -173,6 +127,32 @@ include("./../../../../php/verificar_session.php");
                           </div>
                         </div>
                       </div>
+
+                      <hr class="bg-secondary">
+
+                      <div class="row">
+
+                        <!-- Grupo: Observación-->
+                        <div class="form-group col-md-6 formulario__grupo" id="grupo__observacion">
+                          <label for="observacion" class="formulario__label">Observación
+                            (Opcional)</label>
+                          <div class="formulario__grupo-input input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fas fa-eye"></i>
+                              </div>
+                            </div>
+                            <input type="text" class="form-control formulario__grupo-input" id="observacion"
+                              name="observacion" placeholder="La cantidad de arroz separada en 3 sacos...">
+                            <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
+                          </div>
+                          <div class="formulario__input-error">
+                            La observación solo debe de contener letras, números, guiones y
+                            el /.
+                          </div>
+                        </div>
+                      </div>
+
 
 
                       <!-- = Message Error -->

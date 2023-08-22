@@ -2,7 +2,7 @@
 
 include("./../../../../databases/db.php");
 
-$query = "SELECT id_req, registrador, fecha_hora FROM requerimiento WHERE estado = 0";
+$query = "SELECT id_req FROM requerimiento WHERE estado = 0";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();
@@ -12,15 +12,23 @@ $json = array();
 
 while ($row = $result->fetch_assoc()) {
 
-    $id_req = $row['id_req'];
+    $queryR = "SELECT * FROM VER_REQUERIMIENTO WHERE id_req = ?";
+    $stmtR = $conn->prepare($queryR);
+    $stmtR->bind_param("i" ,$row['id_req']);
+    $stmtR->execute();
+    $resultR = $stmtR->get_result();
+    $rowR = $resultR->fetch_object();
 
-    $separado = explode(" ", $row['fecha_hora']);
+    $id_req = $rowR->id_req;
+
+    $separado = explode(" ", $rowR->fecha_hora);
+    $fecha = $separado[0];
     $hora = $separado[1];
-    $description = $id_req . " - " . $hora;
+    $description = "Fecha: " . $fecha . " Hora: " . $hora . " Registrador: " . $rowR->nombre_usuario;
 
     $json[] = array(
-        'value' => $id_req,
-        'label' => $row['registrador'],
+        'value' => $rowR->id_req,
+        'label' => "ID: " . $rowR->id_req . " - Sub total: " . $rowR->sub_total,
         'description' => $description,
     );
 }
