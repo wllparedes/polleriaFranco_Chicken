@@ -12,8 +12,6 @@ $(document).ready(() => {
             url: '../models/obtenerPerfil.php',
             type: 'GET',
             success: function (response) {
-                console.log(response)
-
                 // Aquí cargas los datos del cliente en los campos del formulario en el modal
                 let usuario = JSON.parse(response);
                 const datos = usuario['usuario'][0];
