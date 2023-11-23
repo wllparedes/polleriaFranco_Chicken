@@ -91,8 +91,8 @@ include("./../../../../php/verificar_session.php");
                                 <i class="fas fa-user"></i>
                               </div>
                             </div>
-                            <input type="text" class="form-control formulario__grupo-input" id="nombres"
-                              name="nombres" placeholder="John Alexander">
+                            <input type="text" class="form-control formulario__grupo-input" id="nombres" name="nombres"
+                              placeholder="John Alexander">
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
@@ -218,7 +218,8 @@ include("./../../../../php/verificar_session.php");
                             <span class="fas fa-exclamation-circle formulario__validacion-estado"></span>
                           </div>
                           <div class="formulario__input-error">
-                            La contraseña tiene que tener una longitud mayor a 5 caracteres, debe contener al menos una mayúscula, números y algún caracter especial.
+                            La contraseña tiene que tener una longitud mayor a 5 caracteres, debe contener al menos una
+                            mayúscula, números y algún caracter especial.
                           </div>
                         </div>
 

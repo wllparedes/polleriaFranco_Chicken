@@ -4,7 +4,7 @@
     font-weight: 700;
     src: url("../../fonts/nunito-v9-latin-700.eot");
     src: local("Nunito Bold"), local("Nunito-Bold"), url("../../fonts/nunito-v9-latin-700.eot?#iefix") format("embedded-opentype"), url("../../fonts/nunito-v9-latin-700.woff2") format("woff2"), url("../../fonts/nunito-v9-latin-700.woff") format("woff"), url("../../fonts/nunito-v9-latin-700.ttf") format("truetype"), url("../../fonts/nunito-v9-latin-700.svg#Nunito") format("svg");
-}
+}   
 
 :root {
     --color-principal: #FF4500;

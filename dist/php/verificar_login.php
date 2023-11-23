@@ -53,8 +53,6 @@ if (!empty($_POST["correo"]) and !empty($_POST["clave"])) {
         $_SESSION['nom_cargo'] = $dato_cargo->nom_cargo;
       }
 
-
-
       if ($dato_cargo->nom_cargo == "Recepcionista") {
         $redirect = "dist/pages/home/recepcionista/views/inicio";
       } elseif ($dato_cargo->nom_cargo == "Almacenero") {
